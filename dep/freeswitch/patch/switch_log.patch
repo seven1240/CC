@@ -1,0 +1,66 @@
+--- freeswitch-1.0.6/src/switch_log.c	2010-04-07 02:05:28.000000000 +0800
++++ freeswitch-1.0.6/src/switch_log.c	2012-12-19 17:51:18.000000000 +0800
+@@ -30,6 +30,8 @@
+  *
+  */
+ 
++#include <linux/unistd.h>
++
+ #include <switch.h>
+ #include "private/switch_core_pvt.h"
+ 
+@@ -280,23 +282,22 @@
+ 
+ static void *SWITCH_THREAD_FUNC log_thread(switch_thread_t *t, void *obj)
+ {
+-
++	void *pop = NULL;
+ 	if (!obj) {
+ 		obj = NULL;
+ 	}
+ 	THREAD_RUNNING = 1;
+ 
+ 	while (THREAD_RUNNING == 1) {
+-		void *pop = NULL;
+ 		switch_log_node_t *node = NULL;
+ 		switch_log_binding_t *binding;
+ 
+ 		if (switch_queue_pop(LOG_QUEUE, &pop) != SWITCH_STATUS_SUCCESS) {
+-			break;
++			continue;
+ 		}
+ 
+ 		if (!pop) {
+-			break;
++			continue;
+ 		}
+ 
+ 		node = (switch_log_node_t *) pop;
+@@ -311,7 +312,15 @@
+ 		switch_log_node_free(&node);
+ 
+ 	}
+-
++    
++    //chenyuzhen add to flush all log node
++    while(switch_queue_trypop(LOG_QUEUE,&pop) == SWITCH_STATUS_SUCCESS){
++        if(pop){
++            switch_log_node_t *node=(switch_log_node_t*)pop;
++            switch_log_node_free(&node);
++        }
++    }
++    
+ 	THREAD_RUNNING = 0;
+ 	switch_log_printf(SWITCH_CHANNEL_LOG, SWITCH_LOG_CONSOLE, "Logger Ended.\n");
+ 	return NULL;
+@@ -376,8 +385,8 @@
+ 		switch_time_exp_t tm;
+ 
+ 		switch_time_exp_lt(&tm, now);
+-		switch_snprintf(date, sizeof(date), "%0.4d-%0.2d-%0.2d %0.2d:%0.2d:%0.2d.%0.6d",
+-						tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec, tm.tm_usec);
++		switch_snprintf(date, sizeof(date), "%0.4d-%0.2d-%0.2d %0.2d:%0.2d:%0.2d.%0.6d {%d}",
++						tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec, tm.tm_usec,syscall(__NR_gettid));
+ 
+ 		//switch_strftime_nocheck(date, &retsize, sizeof(date), "%Y-%m-%d %T", &tm);
+ 

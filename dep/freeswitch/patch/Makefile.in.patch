@@ -1,0 +1,39 @@
+--- freeswitch-1.0.6/Makefile.in	2010-04-07 02:07:42.000000000 +0800
++++ freeswitch-1.0.6/Makefile.in	2011-09-28 19:04:36.000000000 +0800
+@@ -215,15 +215,11 @@
+ 	$(nodist_freeswitch_OBJECTS)
+ freeswitch_DEPENDENCIES = libfreeswitch.la libs/apr/libapr-1.la \
+ 	$(am__DEPENDENCIES_1)
+-am_fs_cli_OBJECTS = fs_cli-esl.$(OBJEXT) fs_cli-esl_config.$(OBJEXT) \
+-	fs_cli-esl_event.$(OBJEXT) fs_cli-esl_threadmutex.$(OBJEXT) \
+-	fs_cli-fs_cli.$(OBJEXT)
++am_fs_cli_OBJECTS = fs_cli-fs_cli.$(OBJEXT)
+ fs_cli_OBJECTS = $(am_fs_cli_OBJECTS)
+ @HAVE_LIBEDIT_TRUE@fs_cli_DEPENDENCIES =  \
+ @HAVE_LIBEDIT_TRUE@	libs/libedit/src/.libs/libedit.a
+-am_fs_ivrd_OBJECTS = fs_ivrd-esl.$(OBJEXT) \
+-	fs_ivrd-esl_config.$(OBJEXT) fs_ivrd-esl_event.$(OBJEXT) \
+-	fs_ivrd-esl_threadmutex.$(OBJEXT) fs_ivrd-ivrd.$(OBJEXT)
++am_fs_ivrd_OBJECTS = fs_ivrd-ivrd.$(OBJEXT)
+ fs_ivrd_OBJECTS = $(am_fs_ivrd_OBJECTS)
+ fs_ivrd_LDADD = $(LDADD)
+ binSCRIPT_INSTALL = $(INSTALL_SCRIPT)
+@@ -581,14 +577,14 @@
+ 	libs/miniupnpc/upnpcommands.c libs/miniupnpc/minissdpc.c \
+ 	libs/miniupnpc/upnperrors.c libs/libnatpmp/natpmp.c \
+ 	libs/libnatpmp/getgateway.c $(am__append_6)
+-fs_cli_SOURCES = libs/esl/src/esl.c libs/esl/src/esl_config.c libs/esl/src/esl_event.c libs/esl/src/esl_threadmutex.c libs/esl/fs_cli.c
++fs_cli_SOURCES = libs/esl/fs_cli.c
+ fs_cli_CFLAGS = $(AM_CFLAGS) -I$(switch_srcdir)/libs/esl/src/include \
+ 	$(am__append_7)
+-fs_cli_LDFLAGS = $(AM_LDFLAGS) -lpthread $(ESL_LDFLAGS)
++fs_cli_LDFLAGS = $(AM_LDFLAGS) -lpthread $(ESL_LDFLAGS) -lesl -Llibs/esl/
+ @HAVE_LIBEDIT_TRUE@fs_cli_LDADD = libs/libedit/src/.libs/libedit.a
+-fs_ivrd_SOURCES = libs/esl/src/esl.c libs/esl/src/esl_config.c libs/esl/src/esl_event.c libs/esl/src/esl_threadmutex.c libs/esl/ivrd.c
++fs_ivrd_SOURCES = libs/esl/ivrd.c
+ fs_ivrd_CFLAGS = $(AM_CFLAGS) -I$(switch_srcdir)/libs/esl/src/include 
+-fs_ivrd_LDFLAGS = $(AM_LDFLAGS) -lpthread $(ESL_LDFLAGS)
++fs_ivrd_LDFLAGS = $(AM_LDFLAGS) -lpthread $(ESL_LDFLAGS) -lesl -Llibs/esl/
+ nodist_freeswitch_SOURCES = src/include/switch_version.h
+ freeswitch_SOURCES = src/switch.c
+ freeswitch_CFLAGS = $(AM_CFLAGS) $(CORE_CFLAGS) $(am__append_8)

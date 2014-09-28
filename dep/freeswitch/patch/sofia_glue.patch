@@ -1,0 +1,27 @@
+--- freeswitch-1.0.6/src/mod/endpoints/mod_sofia/sofia_glue.c	2010-04-07 02:05:28.000000000 +0800
++++ freeswitch-1.0.6/src/mod/endpoints/mod_sofia/sofia_glue.c	2012-12-24 12:13:30.000000000 +0800
+@@ -279,7 +279,7 @@
+ 			tech_pvt->cng_pt = 0;
+ 		}
+ 	} else {
+-		switch_snprintf(buf + strlen(buf), sizeof(buf) - strlen(buf), "a=silenceSupp:off - - - -\n");
++		//switch_snprintf(buf + strlen(buf), sizeof(buf) - strlen(buf), "a=silenceSupp:off - - - -\n");
+ 	}
+ 
+ 	if (append_audio) {
+@@ -1871,12 +1871,14 @@
+ 
+ 		switch_safe_free(d_url);
+ 
+-		if (!(sofia_private = malloc(sizeof(*sofia_private)))) {
++		//if (!(sofia_private = malloc(sizeof(*sofia_private)))) {
++        if (!(sofia_private = su_alloc(tech_pvt->nh->nh_home,sizeof(*sofia_private)))){
+ 			abort();
+ 		}
+ 
+ 		memset(sofia_private, 0, sizeof(*sofia_private));
+ 		sofia_private->is_call++;
++        sofia_private->is_static++;
+ 
+ 		tech_pvt->sofia_private = sofia_private;
+ 		switch_copy_string(tech_pvt->sofia_private->uuid, switch_core_session_get_uuid(session), sizeof(tech_pvt->sofia_private->uuid));

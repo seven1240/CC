@@ -1,0 +1,36 @@
+--- freeswitch-1.0.6/src/mod/endpoints/mod_sofia/sofia.c	2010-04-07 02:05:28.000000000 +0800
++++ freeswitch-1.0.6/src/mod/endpoints/mod_sofia/sofia.c	2012-12-24 12:14:22.000000000 +0800
+@@ -949,7 +949,7 @@
+ 			nua_handle_bind(nh, NULL);
+ 		}
+ 		sofia_private->destroy_me = 12;
+-		sofia_private_free(sofia_private);
++		//sofia_private_free(sofia_private);
+ 	}
+ 
+ 	if (gateway) {
+@@ -6535,12 +6535,14 @@
+ 		switch_channel_set_caller_profile(channel, tech_pvt->caller_profile);
+ 	}
+ 
+-	if (!(sofia_private = malloc(sizeof(*sofia_private)))) {
++	//if (!(sofia_private = malloc(sizeof(*sofia_private)))) {
++    if (!(sofia_private = su_alloc(nh->nh_home,sizeof(*sofia_private)))){
+ 		abort();
+ 	}
+ 
+ 	memset(sofia_private, 0, sizeof(*sofia_private));
+ 	sofia_private->is_call++;
++    sofia_private->is_static++;
+ 	tech_pvt->sofia_private = sofia_private;
+ 
+ 	if ((profile->pres_type)) {
+@@ -6654,7 +6656,7 @@
+ 	}
+ 
+ 	nua_handle_bind(nh, NULL);
+-	sofia_private_free(sofia_private);
++//	sofia_private_free(sofia_private);
+ 	switch_core_session_destroy(&session);
+ 	nua_respond(nh, 503, "Maximum Calls In Progress", SIPTAG_RETRY_AFTER_STR("300"), TAG_END());
+ 	return;

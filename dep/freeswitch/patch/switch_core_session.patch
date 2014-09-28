@@ -1,0 +1,38 @@
+--- freeswitch-1.0.6/src/switch_core_session.c	2010-04-07 02:05:28.000000000 +0800
++++ freeswitch-1.0.6/src/switch_core_session.c	2012-12-18 14:26:10.000000000 +0800
+@@ -855,6 +855,7 @@
+ 
+ 		(*event)->event_id = SWITCH_EVENT_PRIVATE_COMMAND;
+ 		if (switch_queue_trypush(queue, *event) == SWITCH_STATUS_SUCCESS) {
++		    
+ 			*event = NULL;
+ 			switch_core_session_kill_channel(session, SWITCH_SIG_BREAK);
+ 			status = SWITCH_STATUS_SUCCESS;
+@@ -932,12 +933,17 @@
+ 	switch_status_t status = SWITCH_STATUS_FALSE;
+ 	int x = 0;
+ 	void *pop;
++    //chenyuzhen add memory free
++    switch_event_t *event=NULL;
+ 
+ 	if (session->private_event_queue) {
+ 		while ((status = (switch_status_t) switch_queue_trypop(session->private_event_queue_pri, &pop)) == SWITCH_STATUS_SUCCESS) {
++	        event = (switch_event_t *) pop;             switch_event_destroy(&event);
+ 			x++;
+ 		}
+ 		while ((status = (switch_status_t) switch_queue_trypop(session->private_event_queue, &pop)) == SWITCH_STATUS_SUCCESS) {
++	        event = (switch_event_t *) pop;
++            switch_event_destroy(&event);
+ 			x++;
+ 		}
+ 		check_media(session);
+@@ -1062,6 +1068,9 @@
+ 	switch_buffer_destroy(&(*session)->raw_write_buffer);
+ 	switch_ivr_clear_speech_cache(*session);
+ 	switch_channel_uninit((*session)->channel);
++   
++   //chenyuzhe add to free memory 
++    switch_core_session_flush_private_events(*session);
+ 
+ 	pool = (*session)->pool;
+ 	//#ifndef NDEBUG
