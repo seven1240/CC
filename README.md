@@ -69,10 +69,10 @@
 2. [IVR开发手册](./platform/ivr/doc/develop_manual.doc)
 
 #安装使用
-1. [How To INSTALL](./INSTALL)
+1. [How To INSTALL](./INSTALL.md)
 
 #License
-[Apache 2.0](./LICENSE)
+1. [Apache 2.0](./LICENSE)
 
 
 
