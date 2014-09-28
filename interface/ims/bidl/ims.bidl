@@ -1,0 +1,486 @@
+// Copyright 2002-2014 the original author or authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      CC/LICENSE
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+/******************************************
+ * Ims api Defines of CloudCall Platform
+ * CloundCall ver:2.5
+ *  
+ *****************************************/
+
+include "common.bidl"
+
+namespace ims {
+
+    /*IMS接口，上层服务单元调用，可以做会话操作*/
+    class imsapi
+    {
+        /**
+         * 注册服务
+         * @param type       [in] : 服务单元类型IVR or Acd
+         *        reqid      [out]: 服务单元在IMS中的标识
+         *
+         * @return  接口调用结果
+         */
+        CcResultT Register(ServiceTypeT type,
+                [out] ReqIdT reqid);
+
+        /**
+         * 注销服务
+         * @param reqid     [in] : 注册时得到的服务单元的标识
+         *
+         * @return 接口调用结果
+         */
+        CcResultT UnRegister(ReqIdT reqid);
+
+        /**
+         * 分机注册， IMS会发送此分机的相关事件到此服务单元
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        devicenumber [in] : 分机号码
+         *        dntyp        [in] : 分机类型
+         *
+         * @return 接口调用结果
+         */
+        CcResultT Assign(ReqIdT reqid, string devicenumber, DnTypeT type);
+
+        /**
+         * 分机反注册， IMS不再发送此分机的相关事件到此服务单元
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        devicenumber [in] : 分机号码
+         *        dntyp        [in] : 分机类型
+         *
+         * @return 接口调用结果
+         */
+        CcResultT DeAssign(ReqIdT reqid, string devicenumber, DnTypeT type);
+
+        /**
+         * 外呼
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        srcUri       [in] : 发起呼叫方(用户线，先呼通)
+         *        destUri      [in] : 外呼目标方(外线，后呼通)
+         *        setSrcUri    [in] : 设置呼叫发起方时的来电显示号码
+         *        setDestUri   [in] : 设置呼叫目标方时的来电显示号码
+         *        timeout      [in] : 外呼超时设置
+         *        callmode     [in] : 外呼模式
+         *        sessionid    [all] : 呼叫的session id.
+         *
+         * @return 接口调用结果
+         */
+        CcResultT OutboundCall(ReqIdT reqid, 
+                string devicenumber,
+                string destUri,
+                string setSrcUri,
+                string setDestUri,
+                int32  timeout,
+                CallModeT callmode,
+                [all]  SessionIdT sessionid);
+
+        /** 
+         * 应答
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        devicenumber [in] : 操作的分机号码 
+         *
+         * @return 接口调用结果
+         */
+        CcResultT Answer(ReqIdT reqid,
+                SessionIdT sessionid,
+                string devicenumber);
+
+        /**
+         * 挂断
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        devicenumber [in] : 操作的分机号码 
+         *
+         * @return 接口调用结果
+         */
+
+        CcResultT Release(ReqIdT reqid,
+                SessionIdT sessionid,
+                string devicenumber);
+
+        /**
+         * 保持
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        devicenumber [in] : 操作的分机号码 
+         *
+         * @return 接口调用结果
+         */
+
+        CcResultT Hold(ReqIdT reqid,
+                SessionIdT sessionid,
+                string devicenumber);
+
+        /**
+         * 挂断
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        devicenumber [in] : 操作的分机号码 
+         *
+         * @return 接口调用结果
+         */
+        CcResultT Retrieve(ReqIdT reqid,
+                SessionIdT sessionid,
+                string devicenumber);
+
+        /**
+         * 咨询
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        devicenumber [in] : 操作的分机号码 
+         *        destUri      [in] : 被咨询方的分机号码
+         *        setDestUri  [in] : 设置被咨询方的来电显示号
+         *
+         * @return 接口调用结果
+         */
+        CcResultT Consult(ReqIdT reqid,
+                SessionIdT sessionid,
+                string devicenumber,
+                string destUri,
+                string setDestUri);
+
+        /**
+         * 咨询接回
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        devicenumber [in] : 操作的分机号码 
+         *
+         * @return 接口调用结果
+         */
+        CcResultT Reconnect(ReqIdT reqid,
+                SessionIdT sessionid,
+                string devicenumber);
+
+        /**
+         * 咨询转移
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        devicenumber [in] : 操作的分机号码 
+         *
+         * @return 接口调用结果
+         */
+        CcResultT Transfer(ReqIdT reqid,
+                SessionIdT sessionid,
+                string devicenumber);
+
+        /**
+         * 咨询会议
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        devicenumber [in] : 操作的分机号码 
+         *
+         * @return 接口调用结果
+         */
+        CcResultT Conference(ReqIdT reqid,
+                SessionIdT sessionid,
+                string devicenumber);
+
+        /**
+         * 单步转移
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        devicenumber [in] : 操作的分机号码 
+         *        destUri      [in] : 被转移方的分机号码
+         *        mode         [in] : 转移是否透传
+         *       dispForCalled [in] : 主叫显示号码
+         *
+         * @return 接口调用结果
+         */
+        CcResultT SingleStepTransfer(ReqIdT reqid,
+                SessionIdT sessionid,
+                string devicenumber,
+                string destUri,
+                string dispForCalled);
+
+        /**
+         * 单步会议(这里的参数devicenumber是被操作方的分机号码哦)
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        devicenumber [in] : 被操作的分机号码 
+         *        srcUri       [in] : 发起单步会议的分机号码
+         *       dispForCalled [in] : 主叫显示号码
+         *        type         [in] : 单步会议的类型 ,监听，强插，监听强插
+         *
+         * @return 接口调用结果
+         */
+
+        CcResultT SingleStepConference(ReqIdT reqid,
+                SessionIdT sessionid,
+                string devicenumber,
+                string destUri,
+                string dispForCalled,
+                SsConferenceTypeT type);
+
+        /**
+         * 监听变强插
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        devicenumber [in] : 操作的分机号码 
+         *
+         * @return 接口调用结果
+         */
+        CcResultT SwitchListenAndIntrude(ReqIdT reqid,
+                SessionIdT sessionid,
+                string devicenumber);
+
+        /**
+         * 设置随路数据
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        data         [in] : 随路数据
+         *
+         * @return 接口调用结果
+         */
+        CcResultT SetAssociateData(ReqIdT reqid,
+                SessionIdT sessionid,
+                string key,
+                string val);
+
+        /**
+         * 取随路数据
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        data         [out] : 随路数据
+         *
+         * @return 接口调用结果
+         */
+        CcResultT GetAssociateData(ReqIdT reqid,
+                SessionIdT sessionid,
+                string key,
+                [out] string val);
+
+        /**
+         * 发起路由请求
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        dest_service [in] : 目的服务的类型 
+         *        out      [in] : 请求超时时间
+         *        valid_time   [in] : 设备锁定时间
+         *        reqType      [in] : 请求类型
+         *        reqArgs      [in] : 请求参数，是工号或者工号列表
+         *        level        [in] : 客户级别
+         *        caller_uri   [in] : 主叫分机号码
+         *        callee_uri   [in] : 被叫分机号码
+         *        buffer       [in] : 保留参数
+         *        requestId    [out]: 返回一个标志路由请求的ID
+         *
+         * @return 接口调用结果
+         */
+        CcResultT RouteRequest(ReqIdT reqid,
+                SessionIdT sessionid,
+                ServiceTypeT destService,
+                int32 timeout,
+                int32 valid_time,
+                RouteRequestTypeT reqType,
+                string reqArgs,
+                int32 level,
+                string caller_uri,
+                string callee_uri,
+                string buffer,
+                [out] RouteRequestIDT requestId 
+                );
+
+        /**
+         * 取消路由请求
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        requestId    [in] : 路由请求ID 
+         *
+         * @return 接口调用结果
+         */
+        CcResultT CancelRouteRequest(ReqIdT reqid,
+                SessionIdT sessionid,
+                RouteRequestIDT  requestId
+                );
+
+        /**
+         * 路由请求回复
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        requestId    [in] : 路由请求ID 
+         *        result       [in] : 路由请求结果
+         *        targetUri    [in] : 路由找到的分机号码 
+         *
+         * @return 接口调用结果
+         */
+        CcResultT RouteRequestRespond(ReqIdT reqid,
+                SessionIdT sessionid,
+                RouteRequestIDT  requestId,
+                RouteEventReasonT result,
+                string targetUri
+                );
+
+        /**
+         * 创建Session
+         * @param reqid        [in]  : 注册时得到的服务单元的标识
+         *        callsource   [in]  : freeswitch IP
+         *        channel_id   [in]  : 客户对应的channel uuid
+         *        oricalled    [in]  : 原始被叫
+         *        sessionid    [out] : 返回IMS创建的session id 
+         *
+         * @return 接口调用结果
+         */
+        CcResultT CreateSession(ReqIdT reqid,
+                string callsource,
+                string channel_id,
+                string oricalled,
+                [out] SessionIdT sessionid
+                );
+
+        /**
+         * 转坐席的方式
+         * @param reqid        [in] : 注册时得到的服务单元的标识
+         *        sessionid    [in] : 呼叫的sessionid
+         *        requestId    [in] : 路由请求ID
+         *        transType    [in] : 转移类型     
+         * @return 接口调用结果
+         */
+        CcResultT TransferAgent(ReqIdT reqid,
+                SessionIdT sessionid,
+                RouteRequestIDT  requestId,
+                TransferTypeT transType
+                );
+
+        /**
+         * 录音
+         * @param reqid             [in] : 注册时得到的服务单元的标识
+         *        sessionid         [in] : 呼叫的sessionid
+         *        devicenumber      [in] : 操作的分机号码 
+         *        recordfile        [in] : 录音文件名
+         *        max_time          [in] : 录音时长设置
+         *        interrupt_keys    [in] : 录音中断按键
+         *
+         * @return 接口调用结果
+         */
+        CcResultT Record(ReqIdT reqid,
+                SessionIdT sessionid,
+                string devicenumber,
+                string filename,
+                int32 maxTime,
+                string interruptKeys);
+
+        /**
+         * 发送按键
+         * @param reqid             [in] : 注册时得到的服务单元的标识
+         *        sessionid         [in] : 呼叫的sessionid
+         *        devicenumber      [in] : 操作的分机号码 
+         *        dtmf              [in] : DTMF串
+         *
+         * @return 接口调用结果
+         */
+        CcResultT SendDTMF(ReqIdT reqid,
+                SessionIdT sessionid,
+                string devicenumber,
+                string dtmf);
+
+        /**
+         * 销毁SESSION,挂断session中所有呼叫，回收资源
+         * @param reqid             [in] : 注册时得到的服务单元的标识
+         *        sessionid         [in] : 呼叫的sessionid
+         *
+         * @return 接口调用结果
+         */
+        CcResultT DestroySession(ReqIdT reqid, SessionIdT sessionid);
+
+        /**
+         * 查询session相关信息
+         * @param reqid             [in] : 注册时得到的服务单元的标识
+         *        sessionid         [in] : 呼叫的sessionid
+         *        originalAni       [out]: 原始主叫
+         *        originalDNIS      [out]: 原始被叫
+         *        callidList        [out]: 呼叫列表
+         *        deviceList        [out]: 分机列表
+         *
+         * @return 接口调用结果
+         */
+        CcResultT QuerySession(ReqIdT reqid, 
+                SessionIdT sessionid,
+                [out] string  originalAni,
+                [out] string  originalDnis,
+                [out] CallIdListT callidList,
+                [out] sequence<string> deviceList);
+
+        /**
+         * 查询call信息
+         * @param reqid             [in] : 注册时得到的服务单元的标识
+         *        callid            [in] : 当前的呼叫ID
+         *        deviceani         [out]: 主叫
+         *        deviceDnis        [out]: 被叫
+         *        originalAni       [out]: 原始主叫
+         *        originalDNIS      [out]: 原始被叫
+         *        deviceList        [out]: 分机列表
+         *        sessionid         [out] : 呼叫的sessionid
+         *        fsid              [out] : 呼叫的所属freeswitch
+         *
+         * @return 接口调用结果
+         */
+        CcResultT QueryCall(ReqIdT reqid,
+                SessionIdT sessionid,
+                CallIdT callId,
+                [out] string deviceAni,
+                [out] string deviceDnis,
+                [out] string originalAni,
+                [out] string originalDnis,
+                [out] sequence<string> deviceList,
+                [out] int32  fsid);
+
+        /**
+         * 查询分机信息
+         * @param reqid             [in] : 注册时得到的服务单元的标识
+         *        device            [in] : 查询的分机
+         *        sessionid         [out] : 呼叫的sessionid
+         *        callstate         [out] : 呼叫状态
+         *        mediastate         [out] : 媒体状态
+         *
+         * @return 接口调用结果
+         */
+        CcResultT QueryDevice(ReqIdT reqid,
+                string device,
+                [out] SessionIdT sessionid,
+                [out] CallIdT callId,
+                [out] CallStateT callstate,
+                [out] MediaStateT mediastate);
+
+        /**
+         * 查询系统信息
+         * @param reqid             [in] : 注册时得到的服务单元的标识
+         *        sysinfo           [in] : ims系统信息
+         *
+         * @return 接口调用结果
+         */
+        CcResultT QuerySysInfo(ReqIdT reqid,
+                [out] SysInfoT sysinfo);
+
+        /**
+         * 配置动态加载
+         * @param type             [in] : 动态加载的内容
+         *
+         * @return 接口调用结果
+         */
+        CcResultT ReloadConfig(ConfigTypeT type);
+
+        /**
+         * 心跳接口
+         * @param reqid            [in] : reqid
+         * @param info             [in] : 备用，可空
+         *
+         * @return 接口调用结果
+         */
+
+        CcResultT HeartBeat(ReqIdT reqid, 
+                string info);
+    }
+}

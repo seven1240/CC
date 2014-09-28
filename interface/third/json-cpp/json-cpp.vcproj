@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="gb2312"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.10"
+	Name="json-cpp"
+	ProjectGUID="{5DA91A65-082E-4E9C-BF08-498978509F2A}"
+	Keyword="Win32Proj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+    <Configurations>
+        <Configuration
+			Name="Debug|Win32"
+			OutputDirectory="Debug"
+			IntermediateDirectory="Debug"
+			ConfigurationType="4"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="./include"
+				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
+				MinimalRebuild="TRUE"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				RuntimeTypeInfo="TRUE"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="4"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="json-cppd_0.5.0.lib"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+                Name="VCPostBuildEventTool"
+                CommandLine="if not exist ..\..\output\third\json-cpp\lib\win32 md ..\..\output\third\json-cpp\lib\win32
+copy json-cppd_0.5.0.lib ..\..\output\third\json-cpp\lib\win32\
+if not exist ..\..\output\third\json-cpp\include md ..\..\output\third\json-cpp\include
+copy include\json\*.h ..\..\output\third\json-cpp\include\
+"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="Release"
+			IntermediateDirectory="Release"
+			ConfigurationType="4"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="./include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
+				RuntimeLibrary="0"
+				RuntimeTypeInfo="TRUE"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="json-cpp_0.5.0.lib"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+                Name="VCPostBuildEventTool"
+                CommandLine="if not exist ..\..\output\third\json-cpp\lib\win32 md ..\..\output\third\json-cpp\lib\win32
+copy json-cpp_0.5.0.lib ..\..\output\third\json-cpp\lib\win32\
+if not exist ..\..\output\third\json-cpp\include md ..\..\output\third\json-cpp\include
+copy include\json\*.h ..\..\output\third\json-cpp\include\
+"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<Filter
+			Name="源文件"
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+			<File
+				RelativePath=".\json_reader.cpp">
+			</File>
+			<File
+				RelativePath=".\json_writer.cpp">
+			</File>
+			<File
+				RelativePath=".\json_value.cpp">
+			</File>
+		</Filter>
+		<Filter
+			Name="头文件"
+			Filter="h;hpp;hxx;hm;inl;inc;xsd"
+            UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+            <File RelativePath=".\include\json\autolink.h"> </File>
+            <File RelativePath=".\include\json\config.h"> </File>
+            <File RelativePath=".\include\json\features.h"> </File>
+            <File RelativePath=".\include\json\forwards.h"> </File>
+            <File RelativePath=".\include\json\json.h"> </File>
+            <File RelativePath=".\include\json\reader.h"> </File>
+            <File RelativePath=".\include\json\value.h"> </File>
+            <File RelativePath=".\include\json\writer.h"> </File> 
+            <File RelativePath=".\json_tools.h"> </File>
+            <File RelativePath=".\json_batchallocator.h"> </File> 
+		</Filter>
+		<Filter
+			Name="资源文件"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
+			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

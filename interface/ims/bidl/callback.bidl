@@ -1,0 +1,57 @@
+// Copyright 2002-2014 the original author or authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      CC/LICENSE
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+/******************************************
+ * Callback of CloudCall Platform
+ * CloundCall ver:2.5
+ *  
+ *****************************************/
+
+include "common.bidl"
+
+namespace ims {
+
+    /*服务单元需要实现的接口，提供给IMS上送事件*/
+    class event_callback
+    {
+        /**
+         * 发送呼叫事件
+         * @param event: 呼叫事件
+         * @return  接口调用结果
+         */
+        CcResultT SendCallEvent(CallEventT event);    
+
+        /**
+         * 发送媒体事件
+         * @param event: 媒体事件
+         * @return  接口调用结果
+         */
+        CcResultT SendMediaEvent(MediaEventT event);
+
+        /**
+         * 发送路由事件
+         * @param event: 路由事件
+         * @return  接口调用结果
+         */
+        CcResultT SendRouteEvent(RouteEventT event);
+
+        /**
+         * 发送路由事件
+         * @param event: 路由事件
+         * @return  接口调用结果
+         */
+        CcResultT SendOtherEvent(OtherEventT event);
+    }
+}

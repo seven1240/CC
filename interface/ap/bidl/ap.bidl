@@ -1,0 +1,46 @@
+// Copyright 2002-2014 the original author or authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      CC/LICENSE
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+include "acdcommon.bidl"
+
+namespace ap
+{
+    struct ApAgentInfo
+    {
+        string agentId;          /*坐席工号，并唯一标示一个agentbar连接*/
+        string agentDn;         /*座席使用的电话号码*/
+        string agentPwd;        /*座席签入的密码*/
+        acd.StatusChangeT statusChangetype; /*挂断后状态（自动示闲、自动示忙）*/
+        boolean autoAnswer; /*挂断后，从示闲或示忙状态到后处理的时间间隔，默认5秒*/
+        boolean fcSignin; /*坐席已签入，是否强制签出后迁入 */
+        string skills; /*技能和技能级别描述*/
+        string proxyname; /*保存的proxyname*/
+        string proxyname_old;
+        int64 handle;
+        int32 flag;
+
+    }
+
+    typedef sequence<ApAgentInfo> ApAgentInfoListT;
+
+    //ap对外接口
+    class apapi
+    {
+
+        boolean ReLoadConfig();
+
+        boolean GetAgents([out] ApAgentInfoListT agentInfoList);
+    }
+}

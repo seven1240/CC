@@ -1,0 +1,13 @@
+AR  = ar -rcs
+CXX = g++
+
+BGCC_DIR = ../dep/bgcc/output
+
+BIDL2SL  := $(BGCC_DIR)/bidl2sl
+
+CXXFLAGS = -Wall -W -pipe -Wno-unused-parameter -Wreorder -Wwrite-strings -Wswitch -Wno-sign-compare\
+		   -g -D__XDEBUG__ -D__YDEBUG__ \
+		   -fPIC -finline-functions -Winline -Wreturn-type -Wtrigraphs -Wformat -Wparentheses -Wpointer-arith -Werror
+
+INC_PATH  := $(BGCC_DIR)/include
+LIB_PATH  := $(BGCC_DIR)/lib/

@@ -1,0 +1,337 @@
+// Copyright 2002-2014 the original author or authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      CC/LICENSE
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+// *****************************************
+// acd common Defines of CloudCall Platform
+// CloundCall ver:2.5
+// *****************************************
+
+namespace acd
+{
+    // 接口调用返回值
+    enum AcdResultT 
+    {
+        ArSuccess,                                          // 接口调用成功
+        ArAgentIdIsEmpty,                                   // 坐席工号为空
+        ArAgentDnIsEmpty,                                   // 坐席分机为空
+        ArSkillIsEmpty,                                     // 坐席技能为空
+        ArCallerIdIsEmpty,                                  // 路由标识为空
+        ArDestIdIsEmpty,                                    // 目标坐席工号为空
+        ArDestDnIsEmpty,                                    // 目标坐席分机为空
+        ArKeyIsEmpty,                                       // 随路数据键为空
+        ArValueIsEmpty,                                     // 随路数据值为空
+        ArDigitalsIsEmpty,                                  // 二次拨号值为空
+        ArFilenameIsEmpty,                                  // 文件名为空
+        ArAgentIdNotExist,                                  // 坐席工号不存在
+        ArAgentPasswordError,                               // 坐席密码错误
+        ArAgentSkillError,                                  // 坐席技能错误
+        ArNotMaster,                                        // 非主机
+        ArAgentDnBeOccupied,                                // 坐席分机被占用
+        ArHasSigned,                                        // 已签入
+        ArNoSignin,                                         // 未签入
+        ArDestAgentIdNotExist,                              // 目标坐席工号不存在
+        ArDestAgentDnNotExist,                              // 目标坐席分机不存在
+        ArSkillNotExist,                                      // 技能不存在
+        ArRouteRequestNotExist,                             // 路由请求不存在
+        ArAgentStatusIsWrong,                               // 坐席状态错误
+        ArImsError,                                         // ims错误
+        ArPasswordError,                                    // 密码错误
+        ArFailed,                                           // 其他错误
+        ArApFailed,                                         // ap错误
+        ArConnAcdFail                                       // ap连接acd错误
+    }
+
+    enum StatusChangeT
+    {
+        ScReady,                                            // 置闲
+        ScBusy                                              // 置忙
+    }
+
+    enum AgentStatusT
+    {
+        AsUnknownState,                                     // 未知状态
+        AsUnLoginState,                                     // 未登录
+        AsReadyState,                                       // 空闲
+        AsBusyState,                                        // 忙
+        AsRestState,                                        // 休息
+        AsLockState,                                        // 预占
+        AsAlertingState,                                    // 振铃状态
+        AsHalfAlertingState,                                // 硬电话振铃
+        AsConnectingState,                                  // 对方振铃状态
+        AsConnectedState,                                   // 通话状态
+        AsHalfConnectedState,                               // 硬电话接通
+        AsInternalConnectedState,                           // 内部通话状态
+        AsSuspendedState,                                   // 保持状态
+        AsConsultConnectingState,                           // 咨询呼叫状态
+        AsConsultConnectedState,                            // 咨询通话状态
+        AsConferenceState,                                  // 会议状态
+        AsMonitorState,                                     // 监听状态
+        AsInsertState,                                      // 强插状态
+        AsMonitoredState,                                   // 被监听状态
+        AsInsertedState                                     // 被强插状态
+    }
+
+    enum CallModeT
+    {
+        CmNormal,                                           // 普通模式
+        CmOffhook                                           // 主叫长摘机
+    }
+
+    enum CallTypeT
+    {
+        CtAgent,                                            // 内呼
+        CtOut                                               // 外呼
+    }
+
+    enum ConferenceT
+    {
+        ConferenceMute,                                     // 只听
+        ConferenceSpeak,                                    // 只说
+        ConferenceAll                                       // 听说
+    }
+
+    struct AgentInfoT
+    {
+        string                  agentId;                    // 坐席ID
+        string                  agentDn;                    // 坐席号码
+        int64                   loginTime;                  // 登陆时间
+        AgentStatusT            currStatus;                 // 坐席当前状态
+        int64                   currStatusTime;             // 当前状态时间
+        int64                   answerTime;                 // 通话开始时间
+        int64                   currTime;                   // 当前时间
+        string                  origCaller;                 // 原始主叫
+        string                  origCallee;                 // 原始被叫
+        int32                   privQueueNum;               // 私有队列数
+        int32                   callTimes;                  // 此次登录呼叫次数
+        int32                   answerTimes;                // 此次登录通话次数
+        int64                   freeTotalTime;              // 此次登录空闲总时长
+        int64                   busyTotalTime;              // 此次登录忙总时长
+        int64                   resetTotalTime;             // 此次登录休息总时长
+        int64                   callTotalTime;              // 此次登录后呼叫总时长
+        int64                   answerTotalTime;            // 此次登录后通话总时长
+        string                  agentIP;                    // 坐席IP地址
+    }
+
+    typedef sequence<string> StringListT;
+
+    typedef sequence<AgentInfoT> AgentInfoListT;
+
+    struct QueueInfoT
+    {
+        string                  callId;                     // callid
+        int64                   contactId;                  // sessionid
+        int64                   requestId;                  // 路由请求id
+        string                  origCaller;                 // 原始主叫
+        string                  origCallee;                 // 原始被叫
+        int64                   startTime;                  // 请求开始时间
+        int64                   currTime;                   // 当前时间
+        int64                   changeTime;                 // 路由调整时间
+    }
+
+    typedef sequence<QueueInfoT> QueueInfoListT;
+
+    struct SysInfoT
+    {
+        int32                   totalAgents;                // 签入座席总数
+        int32                   totalCalls;                 // 系统呼叫总数
+        int32                   ivrCalls;                   // IVR上呼叫总数
+        int32                   agentCalls;                 // 坐席呼叫总数
+        int32                   queueCalls;                 // 队列上呼叫总数
+        int32                   privQueueCalls;             // 私有队列呼叫总数
+    }
+
+    enum CallEventTypeT 
+    {
+        CeUnKnownEvent,
+        CeInboundCallInternalCall,
+        CeDestSeizedInternalCall,
+        CeThisPartyAnsweredInternalCall,
+        CeOtherPartyAnsweredInternalCall,
+        CeThisPartyDisconnectedInternalCall,
+        CeOtherPartyDisconnectedInternalCall,
+
+        CeInboundCallNormalCall,
+        CeDestSeizedNormalCall,
+        CeThisPartyAnsweredNormalCall,
+        CeOtherPartyAnsweredNormalCall,
+        CeThisPartyDisconnectedNormalCall,
+        CeOtherPartyDisconnectedNormalCall,
+        CeThisPartySuspendedNormalCall,
+        CeThisPartyRetrievedNormalCall,
+        CeThisPartyTransferredNormalCall,
+
+        CeDestSeizedConsultCall,
+        CeOtherPartyAnsweredConsultCall,
+        CeThisPartyDisconnectedConsultCall,
+        CeOtherPartyDisconnectedConsultCall,
+        CeThisPartyTransferredConsultCall,
+        CeOtherPartyTransferredConsultCall,
+
+        CeThisPartyConferencedConferenceCall,
+        CeOtherPartyConferencedConferenceCall,
+        CeThisPartyDisconnectConferenceCall,
+        CeOtherPartyDisconnectConferenceCall,
+
+        CeThisPartyConferencedMonitorCall,
+        CeOtherPartyConferencedMonitorCall,
+        CeThisPartyDisconnectMonitorCall,
+        CeOtherPartyDisconnectMonitorCall,
+
+        CeThisPartyConferencedIntrudeCall,
+        CeOtherPartyConferencedIntrudeCall,
+        CeThisPartyDisconnectIntrudeCall,
+        CeOtherPartyDisconnectIntrudeCall
+    }
+
+    enum PartyAttributeT
+    {
+        PaUnknown,
+        PaInternal,
+        PaNormal
+    }
+
+    enum CallEventReasonT
+    {
+        CerSuccess,
+        CerInvokeComplete,
+        CerCallDestBusy,
+        CerCallNoAnswer,
+        CerCallDestUnknown,
+        CerCallDestInvalid,
+        CerCallTimeout,
+        CerUnloginInitial,
+        CerUnloginLogout,
+        CerUnloginSelfForceout,
+        CerUnloginOtherForceout,
+        CerUnloginBackup,
+        CerUnloginResignin,
+        CerUnloginElse,
+        CerIdleSelfLogin,
+        CerIdleOtherLogin,
+        CerIdleNormalSelfHangup,
+        CerIdleNormalOtherHangup,
+        CerIdleErrorSelfHangup,
+        CerIdleErrorOtherHangup,
+        CerIdleUnlock,
+        CerIdleIdle,
+        CerIdleSelfSet,
+        CerIdleOtherSet,
+        CerIdleElse,
+        CerTalkSelfCreat,
+        CerTalkOtherCreat,
+        CerTalkSelfRetrieve,
+        CerTalkOtherRetrieve,
+        CerTalkElse
+    }
+
+    struct AgentEventT
+    {
+        string                  agentId;
+        CallEventTypeT          eventId;
+        string                  agentDn;
+        string                  callId;
+        int64                   sessionId;
+        AgentStatusT            agentStatus;
+        string                  originalCallid;
+        int32                   partyNum;
+        string                  otherParty;
+        PartyAttributeT         otherAttr;
+        string                  originatingParty;
+        string                  originalAni;
+        string                  originalDnis;
+        CallEventReasonT        reason;
+        int64                   timestamp;
+    }
+
+    enum MediaEventTypeT 
+    {
+        MeUnKownEvent,                                      // 未知事件
+        MeTpRecordStarted,                                  // 表明硬件层正式开始录音
+        MeOpRecordStarted,
+        MeTpRecordDone,                                     // 表明硬件层录音结束
+        MeOpRecordDone
+    }
+
+    enum MediaStateT 
+    {
+        MsUnknownState,
+        MsIdleState,                                        // 空闲
+        MsRecordingState                                    // 录音
+    }
+
+    enum MediaEventReasonT 
+    {
+        MerMediaUnknown,                                    // 未知
+        MerMediaEnd,                                        // 媒体操作结束
+        MerMediaOther                                       // 其他
+    }
+
+    struct MediaEventT
+    {
+        string                  agentId;
+        MediaEventTypeT         eventType;
+        string                  agentDn;
+        string                  callId;
+        int64                    sessionId;
+        MediaStateT             state;
+        MediaEventReasonT       reason;
+        string                  otherParty;
+        string                  buffer;
+        int64                    timestamp;
+    }
+
+    enum RouteEventTypeT
+    {
+        ReInQueue,
+        ReOutQueue
+    }
+
+    struct RouteEventT 
+    {
+        string                  agentId;
+        RouteEventTypeT         eventType;
+        string                  agentDn;
+        string                  callId;
+        int64                   sessionId;
+        int64                   requestId;
+        string                  originalAni;
+        string                  originalDnis;
+        int64                   timestamp;
+    }
+
+    enum OtherEventTypeT
+    {
+        IMSDisconnect,
+        IMSMasterChange,
+        IMSOperationFailed,
+        ACDDisconnect,
+        ACDMasterChange,
+        ACDOperationFailed,
+        ACDReLoginSuccess,
+        ACDReLoginFailed
+    }
+
+    struct OtherEventT
+    {
+        string                  agentId;
+        OtherEventTypeT         eventType;
+        string                  agentDn;
+        string                  callId;
+        int64                   sessionId;
+        string                  originalAni;
+        string                  originalDnis;
+        int64                   timestamp;
+    }
+}

@@ -1,0 +1,565 @@
+// Copyright 2002-2014 the original author or authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      CC/LICENSE
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+// *****************************************
+// acd api Defines of CloudCall Platform
+// CloundCall ver:2.5
+// *****************************************
+
+include "acdcommon.bidl"
+
+namespace acd
+{
+    // acd接口，客户端向服务器请求操作
+    class acdapi
+    {
+
+        //**********************【状态设置接口】**********************
+
+        // 座席签入
+        // @param agentId             [in] : 坐席工号
+        //        agentDn             [in] : 座席使用的电话号码
+        //        agentPwd            [in] : 座席签入的密码
+        //        statusChangetype    [in] : 挂断后状态（自动示闲、自动示忙，默认为示闲）
+        //        autoAnswer          [in] : 是否自动应答；默认为自动应答
+        //        fcSignin            [in] : 坐席已签入，是否强制签出后迁入
+        //        skill               [in] : 技能和技能级别描述
+        //        handle              [out] : 连接句柄
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT SignIn(string agentId, string agentDn, string agentPwd, StatusChangeT statusChangetype, 
+            boolean autoAnswer, boolean fcSignin, string skill, [out] int64 handle);
+
+        // 座席签出
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT SignOut(int64 handle, string agentId);
+
+        // 设置座席状态
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        agentStatus         [in] : 坐席状态
+        //        restReason          [in] : 设置原因，只在休息时生效
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT SetAgentStatus(int64 handle, string agentId, AgentStatusT agentStatus, string restReason);
+
+        // 获取座席状态
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        agentStatus         [out] : 坐席状态
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT GetAgentStatus(int64 handle, string agentId, [out] AgentStatusT agentStatus);
+
+        // 重置挂断后状态
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        statusChangetype    [in] : 挂断后状态（自动示闲、自动示忙、后处理）；默认自动示闲
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT ResetStatuschangetype(int64 handle, string agentId, StatusChangeT statusChangetype);
+
+        // 重置自动应答
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        autoAnswer          [in] : 默认为自动应答
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT ResetAutoAnswer(int64 handle, string agentId, boolean autoAnswer);
+
+        // 重置技能
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        skill               [in] : 技能描述
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT ResetSkill(int64 handle, string agentId, string skill);
+
+        // 重置
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT Reset(int64 handle, string agentId);
+
+        //**********************【呼叫控制接口】**********************
+
+        // 坐席外呼
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        callerId            [in] : 主叫
+        //        destId              [in] : 被叫方标识
+        //        forCallerDispNum    [in] : 为主叫显示的主叫号码
+        //        forCalleeDispNum    [in] : 为被叫显示的主叫号码；
+        //        timeout             [in] : 外拨超时时间
+        //        callMode            [in] : 普通呼叫还是常摘机
+        //        callType            [in] : 呼叫类型：内部呼叫、外部呼叫，内部呼叫被叫为工号，外部呼叫被叫为号码
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT OutboundCall(int64 handle, string agentId, string callerId, string destId, string forCallerDispNum, 
+            string forCalleeDispNum, int32 timeout, CallModeT callMode, CallTypeT callType);
+
+        // 坐席应答
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT AnswerCall(int64 handle, string agentId);
+
+        // 坐席挂断
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT ReleaseCall(int64 handle, string agentId);
+
+        // 坐席保持
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT Hold(int64 handle, string agentId);
+
+        // 坐席保持接回
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT Retrieve(int64 handle, string agentId);
+
+        // 坐席咨询
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        callerId            [in] : 主叫
+        //        destId              [in] : 被咨询方标识
+        //        forCallerDispNum    [in] : 主叫显示号码
+        //        forCalleeDispNum    [in] : 被叫显示号码
+        //        callType            [in] : 咨询类型：内线、外线，内线为工号，外线为号码
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT Consult(int64 handle, string agentId, string callerId, string destId, string forCallerDispNum, 
+            string forCalleeDispNum, CallTypeT callType);
+
+        // 坐席咨询接回
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT ConsultReconnect(int64 handle, string agentId);
+
+        // 坐席咨询转移
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT ConsultTransfer(int64 handle, string agentId);
+
+        // 坐席通话转移
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        callerId            [in] : 主叫
+        //        destId              [in] : 被转移方标识
+        //        forCallerDispNum    [in] : 主叫显示号码
+        //        forCalleeDispNum    [in] : 被叫显示号码
+        //        isPassthrough       [in] : 默认为当前active的callid
+        //        transferType        [in] : 转移方式：内线、外线，内线为工号，外线为号码
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT SingleStepTransfer(int64 handle, string agentId, string callerId, string destId, string forCallerDispNum, 
+            string forCalleeDispNum, boolean isPassthrough, CallTypeT transferType);
+
+        // 坐席咨询会议
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT ConsultConference(int64 handle, string agentId);
+
+        // 坐席加入会议
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        callerId            [in] : 主叫
+        //        destAgentId         [in] : 加入会议的坐席工号
+        //        forCallerDispNum    [in] : 主叫显示号码
+        //        forCalleeDispNum    [in] : 被叫显示号码
+        //        conferenceType      [in] : 加入会议的类型：只听、只说、听说
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT ConferenceJoin(int64 handle, string agentId, string callerId, string destAgentId, string forCallerDispNum, 
+            string forCalleeDispNum, ConferenceT conferenceType);
+
+        // 设置随路数据的操作
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        key                 [in] : 随路数据键值
+        //        value               [in] : 随路数据内容
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT SetAssociateData(int64 handle, string agentId, string key, string value);
+
+        // 获取随路数据的操作
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        key                 [in] : 随路数据键值
+        //        value               [out] : 随路数据内容
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT GetAssociateData(int64 handle, string agentId, string key, [out] string value);
+        
+        // 插队
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        requestId           [in] : 路由请求id
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT JumptheQueue(int64 handle, string agentId, int64 requestId);
+
+        //**********************质检接口**********************
+
+        // 代签
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        destAgentId         [in] : 被操作坐席标识
+        //        agentDn             [in] : 被操作座席使用的电话号码；无默认值
+        //        agentPwd            [in] : 被操作座席签入的密码；无默认值
+        //        statusChangetype    [in] : 被操作挂断后状态（自动示闲、自动示忙）；默认自动示闲
+        //        autoAnswer          [in] : 被操作是否自动应答；默认为自动应答
+        //        fcSignin            [in] : 坐席已签入，是否强制签出后迁入
+        //        skill               [in] : 被操作技能描述
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT ForceSignIn(int64 handle, string agentId, string destAgentId, string agentDn, string agentPwd, 
+            StatusChangeT statusChangetype, boolean autoAnswer, boolean fcSignin, string skill);
+
+        // 强制签出
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        destAgentId         [in] : 被操作坐席标识
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT ForceSignOut(int64 handle, string agentId, string destAgentId);
+
+        // 强制设置座席状态
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        destAgentId         [in] : 被操作坐席标识
+        //        agentStatus         [in] : 坐席状态
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT ForceSetAgentStatus(int64 handle, string agentId, string destAgentId, AgentStatusT agentStatus);
+
+        // 坐席监听
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        callerId            [in] : 主叫
+        //        destAgentId         [in] : 被监听的坐席标识
+        //        forCallerDispNum    [in] : 主叫显示号码
+        //        forCalleeDispNum    [in] : 被叫显示号码
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT Listen(int64 handle, string agentId, string callerId, string destAgentId, string forCallerDispNum, 
+            string forCalleeDispNum);
+
+        // 停止监听
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        destAgentId         [in] : 被监听的坐席标识
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT StopListen(int64 handle, string agentId, string destAgentId);
+
+        // 坐席强插
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        callerId            [in] : 主叫
+        //        destAgentId         [in] : 被强插方AgentID
+        //        forCallerDispNum    [in] : 主叫显示号码
+        //        forCalleeDispNum    [in] : 被叫显示号码
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT Insert(int64 handle, string agentId, string callerId, string destAgentId, string forCallerDispNum, 
+            string forCalleeDispNum);
+
+        // 停止插入座席话路
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        destAgentId         [in] : 被强插方AgentID
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT StopInsert(int64 handle, string agentId, string destAgentId);
+
+        // 监听强插切换
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        callerId            [in] : 主叫
+        //        destAgentId         [in] : 被强插方AgentID
+        //        forCallerDispNum    [in] : 主叫显示号码
+        //        forCalleeDispNum    [in] : 被叫显示号码
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT SwitchInsertorListen(int64 handle, string agentId, string callerId, string destAgentId, string forCallerDispNum, 
+            string forCalleeDispNum);
+
+        // 强拆
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        destAgentId         [in] : 被强拆方AgentID
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT Break(int64 handle, string agentId, string destAgentId);
+
+        //**********************媒体接口**********************
+
+        // 二次拨号
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        Digitals            [in] : 发送的按键内容
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT SendDTMF(int64 handle, string agentId, string digitals);
+
+        // 开始放音
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        filename            [in] : 播放的语音文件名
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT StartPlay(int64 handle, string agentId, string filename);
+
+        // 停止放音
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT StopPlay(int64 handle, string agentId);
+
+        // 静音
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT MuteOn(int64 handle, string agentId);
+
+        // 静音
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT MuteOff(int64 handle, string agentId);
+
+        //**********************查询接口**********************
+
+        // 通过ID获取座席信息
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        destAgentId         [in] : 指定座席AgentID
+        //        agentInfo           [out] : 坐席信息
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT GetAgentDetailByAgentID(int64 handle, string agentId, string destAgentId, 
+            [out] AgentInfoT agentInfo);
+
+        // 通过DN获取座席信息
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        destAgentDn         [in] : 指定座席AgentDN
+        //        agentInfo           [out] : 坐席信息
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT GetAgentDetailByAgentDN(int64 handle, string agentId, string destAgentDn, 
+            [out] AgentInfoT agentInfo);
+
+        // 通过ID批量获取座席信息
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        destAgentIdList     [in] : 指定座席AgentID列表
+        //        agentInfoList       [out] : 批量坐席信息
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT GetAgentDetailsByAgentIDs(int64 handle, string agentId, StringListT destAgentIdList,
+            [out] AgentInfoListT agentInfoList);
+
+        // 通过DN批量获取座席信息
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        destAgentDnList     [in] : 指定座席AgentDN列表
+        //        agentInfoList       [out] : 批量坐席信息
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT GetAgentDetailsByAgentDNs(int64 handle, string agentId, StringListT destAgentDnList,
+            [out] AgentInfoListT agentInfoList);
+
+        // 查询录音文件名
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        filename            [out] : 录音文件名
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT GetRecordFileName(int64 handle, string agentId, [out] string filename);
+
+            // 查询技能
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        skill               [out] : 技能
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT GetSkill(int64 handle, string agentId, [out] StringListT skill);
+        
+            // 查询休息原因
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        restReason          [out] : 休息原因
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT GetRestReason(int64 handle, string agentId, [out] StringListT restReason);
+
+        // 获取当前技能座席数
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        skill               [in] : 技能队列名称
+        //        agentNum            [out] : 登录坐席数量
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT GetAgentNumberBySkill(int64 handle, string agentId, string skill, [out] int32 agentNum);
+
+        // 通过技能批量获取座席信息
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        skill               [in] : 技能队列名称
+        //        agentNum            [out] : 登录坐席数量
+        //        agentInfoList       [out] : 坐席的详细信息
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT GetAgentDetailsBySkill(int64 handle, string agentId, string skill, [out] int32 agentNum, 
+            [out] AgentInfoListT agentInfoList);
+
+        // 查询队列中排队呼叫数
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        skill               [in] : 技能队列名称
+        //        queueNum            [out] : 该技能队列排队数
+        //        freeNum             [out] : 该技能队列排队数
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT GetSkillWaitingNumber(int64 handle, string agentId, string skill, [out] int32 queueNum, 
+            [out] int32 freeNum);
+
+        // 查询队列中排队呼叫信息
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        skill               [in] : 技能队列名称
+        //        queueNum            [out] : 该技能队列排队数
+        //        queueInfoList       [out] : 该技能队列排队客户信息
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT GetSkillWaitingCallInfo(int64 handle, string agentId, string skill, [out] int32 queueNum, 
+            [out] QueueInfoListT queueInfoList); 
+
+        // 查询坐席私有队列信息
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        destAgentId         [in] : 目标坐席工号
+        //        queueNum            [out] : 该技能队列排队数
+        //        queueInfoList       [out] : 该技能队列排队客户信息
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT GetPrivateQueue(int64 handle, string agentId, string destAgentId, [out] int32 queueNum, 
+            [out] QueueInfoListT queueInfoList); 
+
+        // 查询系统相关数据
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        sysInfo             [out] : 技能队列名称
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT GetSysInfo(int64 handle, string agentId, [out] SysInfoT sysInfo);
+
+        // 同步服务器时间
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //        timestamp           [out] : 服务器时间戳
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT SynchronizeCTITime(int64 handle, string agentId, [out] int64 timestamp);
+
+        // 心跳
+        // @param handle              [in] : 连接句柄
+        //        agentId             [in] : 坐席工号
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT Heartbeat(int64 handle, string agentId);
+
+        // 配置重载
+        // @param password              [in] : 密码
+        //
+        // @return  接口调用结果
+        //
+        AcdResultT ResetConfig(string password);
+    }
+}

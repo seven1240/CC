@@ -1,0 +1,319 @@
+// Copyright 2002-2014 the original author or authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      CC/LICENSE
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+
+/******************************************
+ * Common Defines of CloudCall Platform
+ * CloundCall ver:2.5
+ *  
+ *****************************************/
+
+namespace ims {
+
+    typedef int64                   SessionIdT;              /*定义SessionIdT类型*/
+    typedef string                  CallIdT;                 /*定义CallIdT类型*/
+    typedef sequence<CallIdT>       CallIdListT;             /*定义callid列表类型*/
+    typedef map<string, string>     OtherEventDataT;         /*定义OtherEvent的数据*/
+    typedef int64                   RouteRequestIDT;         /*路由请求ID*/
+    typedef int64                   ReqIdT;                  /*reqid*/
+    typedef map<string, string>     AssociateDataT;          /*随路数据*/
+
+    /*接口调用返回值*/
+    enum CcResultT 
+    {
+        ResSuccess,                    /*接口调用成功*/
+        ResFailed,                     /*接口调用失败*/
+        ResInvalidParam,               /*错误的参数*/
+        ResNotSupport,                 /*不支持此操作*/
+        ResNoEnoughResource,           /*资源不足*/
+        ResSessionNotFound,            /*不存在的sessionid*/
+        ResInvalidDn,                  /*不存在的callid*/
+        ResInvalidState,               /*错误的状态*/
+        ResInvalidFile,                /*错误的文件名*/
+        ResInvalidReqId,               /*错误的ReqID*/
+        ResAccessDenied,               /*拒绝Register*/
+        ResRouteRequestRepeated,       /*重复路由请求*/
+        ResCallSourceNotFound,         /*CallSource对应的freeswitch不受IMS管理*/
+        ResNoAgentAssigned             /*该IMS上没有分机注册*/
+
+    }
+
+    /*呼叫模式*/
+    enum CallModeT{
+        Normal,             /*普通模式*/
+        Persist             /*主叫长摘机*/
+    }
+
+    /*单步会议类型*/
+    enum SsConferenceTypeT 
+    {
+        Monitor,
+        Intrude,
+        MonitorIntrude
+    }
+
+    enum DnTypeT{
+        AgentDn,
+        IvrANI
+    }
+
+    /*IMS系统信息*/
+    struct SysInfoT
+    {
+        int64 sessionCount;                  /*当前系统的呼叫量*/
+        float sessionPerSec;                 /*当前系统的呼叫并发量*/
+        int64 sessionSinceStartup;           /*系统自启动至现在的呼叫量*/
+    }
+
+    /*服务单元类型*/
+    enum ServiceTypeT
+    {
+        ServiceNone,                   /*无服务类型 */
+        ServiceIVR,                    /*ivr 服务 */
+        ServiceACD,                    /*acd 服务*/
+        ServiceDS                      /*datastation 服务*/
+    }
+
+    /*呼叫事件类型*/
+    enum CallEventTypeT 
+    {
+        SG_UnKnownEvent,
+        SG_InboundCall_InternalCall,       
+        SG_DestSeized_InternalCall,
+        SG_ThisPartyAnswered_InternalCall,
+        SG_OtherPartyAnswered_InternalCall,
+        SG_ThisPartyDisconnected_InternalCall,
+        SG_OtherPartyDisconnected_InternalCall,
+
+        SG_InboundCall_NormalCall,
+        SG_DestSeized_NormalCall,      
+        SG_ThisPartyAnswered_NormalCall,   
+        SG_OtherPartyAnswered_NormalCall,
+        SG_ThisPartyDisconnected_NormalCall,
+        SG_OtherPartyDisconnected_NormalCall,  
+        SG_ThisPartySuspended_NormalCall,
+        SG_ThisPartyRetrieved_NormalCall,
+        SG_ThisPartyTransferred_NormalCall,
+
+        SG_DestSeized_ConsultCall,
+        SG_OtherPartyAnswered_ConsultCall,
+        SG_ThisPartyDisconnected_ConsultCall,
+        SG_OtherPartyDisconnected_ConsultCall,
+        SG_ThisPartyTransferred_ConsultCall,
+        SG_OtherPartyTransferred_ConsultCall,
+
+        SG_ThisPartyConferenced_ConferenceCall,
+        SG_OtherPartyConferenced_ConferenceCall,
+        SG_ThisPartyDisconnect_ConferenceCall,
+        SG_OtherPartyDisconnect_ConferenceCall,
+
+        SG_ThisPartyConferenced_MonitorCall,   
+        SG_OtherPartyConferenced_MonitorCall,
+        SG_ThisPartyDisconnect_MonitorCall,
+        SG_OtherPartyDisconnect_MonitorCall,
+
+        SG_ThisPartyConferenced_IntrudeCall,   
+        SG_OtherPartyConferenced_IntrudeCall,
+        SG_ThisPartyDisconnect_IntrudeCall,    
+        SG_OtherPartyDisconnect_IntrudeCall
+
+    }
+
+    /*呼叫的状态*/
+    enum CallStateT 
+    {
+        SG_UnknownState,                  /*未知状态*/
+        SG_IdleState,                     /*空闲状态*/
+        SG_AlertingState,                 /*振铃*/
+        SG_HalfAlertingState,             /*硬电话振铃*/
+        SG_ConnectingState,               /*对方振铃*/
+        SG_ConnectedState,                /*通话*/
+        SG_HalfConnectedState,            /*硬电话通话*/
+        //SG_InternalConnectedState,        /*内部通话状态*/
+        SG_SuspendedState,                /*保持状态*/
+        //SG_HeldState,                     /*被保持状态*/
+        //SG_ConsultConnectingState,        /*咨询呼叫状态*/
+        //SG_ConsultConnectedState,         /*咨询状态*/
+        SG_ConferenceState,               /*会议状态*/
+        SG_MonitorState,                  /*监听状态*/
+        SG_IntrudeState                   /*强插*/
+            //SG_MonitoredState,                /*被监听，暂不使用*/
+            //SG_IntrudedState,                 /*被强插,暂不使用*/
+            //SG_QueueState                     /*排队状态，暂不使用*/
+    }
+
+    /*设备的类型*/
+    enum PartyAttributeT 
+    {
+        P_Unknown,          
+        P_Internal,             /*内部*/
+        P_Normal                /*外部*/
+    }
+
+    /*呼叫事件的原因*/
+    enum CallEventReasonT 
+    {
+        ReasonSuccess,
+        ResaonInvokeComplete,      /*调用执行完成*/
+        ReasonCallDestBusy,        /*对方忙*/
+        ReasonCallNoAnswer,        /*对方无应答*/
+        ReasonCallDestUnknown,     /*对方状态未知*/
+        ReasonCallDestInvalid,     /*对方号码无效*/
+        ReasonCallTimeout          /*呼叫超时*/
+    }
+
+    /*呼叫事件*/
+    struct CallEventT
+    {
+        SessionIdT           sessionid;          /*session id*/
+        CallIdT              callid;             /*呼叫callid*/
+        string               device;             /*当前的分机*/
+        CallEventTypeT       eventType;          /*呼叫事件类型*/ 
+        CallStateT           state;              /*当前呼叫状态*/
+        CallIdT              originalCallid;     /*原始callid*/
+        int32                partyNum;           /*呼叫共有几方参与*/
+        string               otherDevice;        /*另一方的分机*/
+        PartyAttributeT      otherAttr;          /*另一方的属性*/
+        string               originatingParty;   /*事件的来源方*/
+        string               originalAni;        /*原始主叫*/
+        string               originalDnis;       /*原始被叫*/
+        CallEventReasonT     reason;             /*事件产生原因*/
+        int64                timestamp;          /*时间戳*/
+    }
+
+
+    /*媒体事件类型*/
+    enum MediaEventTypeT 
+    {
+        MG_UnknownEvent,                     /*未知事件*/
+        MG_TP_Record_Started,               /*表明硬件层正式开始录音*/
+        MG_OP_Record_Started,
+        MG_TP_Record_Done,                  /*表明硬件层录音结束*/
+        MG_OP_Record_Done
+    }
+
+    /*媒体状态*/
+    enum MediaStateT 
+    {
+        MG_UnknownState,              
+        MG_IdleState,                     /*空闲*/
+        MG_RecordingState                 /*录音*/
+    }
+
+    /*媒体结束的原因*/
+    enum MediaEventReasonT 
+    {
+        ReasonMediaUnknown,
+        ReasonMediaEnd,                     /*媒体操作结束*/
+        ReasonMediaOther                    /*其他*/
+    }
+
+    /*媒体事件*/
+    struct MediaEventT
+    {
+        SessionIdT           sessionid;          /*session id*/
+        CallIdT              callid;             /*呼叫callid*/
+        string               device;             /*当前的分机*/
+        MediaEventTypeT      eventType;          /*媒体事件类型*/  
+        MediaStateT          state;              /*媒体状态*/
+        MediaEventReasonT    reason;             /*媒体停止原因*/
+        string               otherDevice;        /*媒体操作的另一方*/
+        string               mediaBuffer;        /*媒体数据*/
+        int64                timestamp;          /*时间戳*/
+    }
+
+    /*路由请求事件类型*/
+    enum RouteEventTypeT
+    {
+        RT_RouteUnknown,
+        RT_RouteRequest,              /*路由请求事件*/
+        RT_RouteRespond,              /*路由请求响应事件*/
+        RT_RouteRequestCancel         /*路由请求取消事件*/
+    }
+
+    /*路由请求目的类型*/
+    enum RouteRequestTypeT{
+        RR_TypeUnknown,
+        RR_TypeSkill,                /*技能*/
+        RR_TypePrivate,              /*私人队列*/
+        RR_TypePrivateList           /*私人队列列表*/
+    }
+
+    /*路由事件原因*/
+    enum RouteEventReasonT
+    {
+        RouteReasonSuccess,             /*成功*/
+        RouteReasonBusy,                /*队列忙*/
+        RouteReasonPrivateBusy,         /*私有队列忙*/
+        RouteReasonWrongSkill,          /*错误的技能*/
+        RouteReasonNotAssigned,         /*坐席未签入*/
+        RouteReasonError,               /*出错了*/
+        RouteReasonIVRCancel,           /*IVR取消*/
+        RouteReasonClientHangup,        /*客户挂断*/
+        RouteReasonOther                /*其他原因*/
+    }
+
+    /*路由事件*/
+    struct RouteEventT 
+    {
+        SessionIdT           sessionid;          /*session id*/
+        CallIdT              callid;             /*呼叫callid*/
+        string               device;             /*当前的分机*/
+        RouteEventTypeT      eventType;          /*路由事件类型*/
+        RouteEventReasonT    reason;             /*路由事件原因*/
+        RouteRequestIDT      requstid;           /*路由请求标识*/ 
+        string               targetDevice;       /*目标设备*/
+        ServiceTypeT         destService;        /*目的服务单元类型*/
+        RouteRequestTypeT    requestType;        /*路由请求类型*/
+        string               requestArgs;        /*路由请求参数，是工号或者工号列表*/ 
+        int32                level;              /*客户级别*/
+        string               callerDn;           /*主叫dn*/
+        string               calleeDn;           /*被叫dn*/
+        int32                validtime;          /*有效时间*/
+        int32                timeout;            /*超时时间*/ 
+        string               buffer;             /*保留参数*/
+        int64                timestamp;          /*事件时间戳*/
+    }
+
+    /*其他事件类型*/
+    enum OtherEventTypeT{
+        OG_HeartBeat,           /*心跳*/
+        OG_SessionCreate,       /*session创建*/
+        OG_OperationFailed      /*当前操作失败*/
+    }
+
+    /*其他自定义事件*/
+    struct OtherEventT
+    {
+        SessionIdT           sessionid;          /*session id*/
+        CallIdT              callid;             /*呼叫callid*/
+        string               device;             /*当前的分机,如果是IVR，则为接入码*/
+        OtherEventTypeT      eventType;          /*事件类型*/
+        int64                timestamp;          /*事件时间戳*/
+        OtherEventDataT      data;               /*事件数据*/
+    }
+
+    /*动态加载的内容*/
+    enum ConfigTypeT{
+        CT_All   /*加载所有能动态加载的配置,log、client、route*/
+    }
+
+    /*转坐席的方式*/
+    enum TransferTypeT{
+        TT_UNKONWN,
+        TT_INSTANT,     /*立即返回*/
+        TT_RING,        /*客户振铃后返回*/
+        TT_ANSWER       /*客户应答后返回*/
+    }
+}
