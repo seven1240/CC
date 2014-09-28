@@ -19,9 +19,9 @@
 4. RECORD. 按需/自动进行分布式通话录音
 
 #逻辑架构
-![](./arch.png)
+![](./img/arch.png)
 #典型组网方案
-![](./solution.png)
+![](./img/solution.png)
 
 #人工功能列表
 1. 登陆/登出
