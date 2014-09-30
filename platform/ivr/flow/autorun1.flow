@@ -1,0 +1,49 @@
+[Var2]
+Type = string
+Name = strCALLID
+
+[Node1]
+Descript=拨号1节点
+Type=Dial
+Callid=${_CALLID}
+NewCallid=strCALLID
+CalledNumber=1014@10.36.159.19
+#CalledNumber=1011
+CallerNumber=110
+#calltype=1
+_Success=2
+_Failure=0
+_UserHangup=0
+
+[Node2]
+Descript=欢迎词
+Type=Play
+Callid=${_CALLID}
+PlayFile=hold_music.wav
+Delay=1
+AllowInterrupt=1
+_Success= 3
+_Failure= 3
+_UserInterrupt=3
+_FileNotFound= 3
+_UserHangup=0
+
+[node3]
+Descript=record
+Type=record
+callid=${_CALLID}
+recordfile=${_CALLID}.wav
+_Success=4
+_Failure=4
+_userinterrupt=4
+_UserHangup=0
+
+
+[Node4]
+Descript=系统挂机
+Type=Hangup
+Callid=${_CALLID}
+_Success=0
+_Failure=0
+_UserHangup=0
+

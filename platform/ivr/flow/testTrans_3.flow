@@ -1,0 +1,136 @@
+
+[var1]
+type = string
+name = playfile
+initial = /home/huxiaolong/ivr20/hold_music.wav
+
+[var2]
+type = string
+name = usrname
+initial = kog
+
+[var3]
+type = string
+name = agentname
+initial=
+
+[var4]
+type = string
+name = usrname_res
+initial=
+
+[var5]
+type = string
+name = imsres
+initial=
+
+[var6]
+type = string
+name = wcallid
+initial=
+
+[var7]
+type = string
+name = tid
+initial=
+
+[node1]
+type = Answer
+descript = answer
+Callid = ${_CALLID}
+_Success = 2
+_Failure = 2
+
+[node2]
+type = RequestAgent
+descript = request agent
+Callid=${_CALLID}
+TimeOut=60
+ValidTime=30
+ReqType=RR_TypeSkill
+ReqArgs=321
+filename=${playfile}
+_Success = 3
+_Failure = 11
+
+[node3]
+type = SetAssociateData
+descript = set associatedata
+key = usr
+value = ${usrname}
+_Success = 5
+_Failure = 5
+
+[node4]
+type=WriteLog
+descript = writedata
+businame=IVR
+exp=failed
+_Success = 0
+_Failure = 0
+
+[node5]
+type = WaitEvent
+descript = wait response result
+uuid=wcallid
+data=imsres
+_imsrouteresponse=6
+_success = 5
+_failure = 4
+
+[node6]
+type = RequestResponseCompare
+descript = requestresult check
+response=${imsres}
+Agent=agentname
+_Success=9
+_Failure=11
+
+[node7]
+type = TransAgent
+descript = trans agent
+TransType= TT_ANSWER
+_Success = 8
+_Failure = 11
+
+[node8]
+type = GetAssociateData
+descript = get usrname
+key = usr
+value = usrname_res
+_Success=0
+_Failure=4
+
+[node9]
+type = RegTimer
+descript = addnewtimer
+timerid = 1
+waittime=60
+_success=10
+_failure=0
+
+[node10]
+type = WaitEvent
+descript = wait stop ims
+uuid=wcallid
+data=tid
+_timeout=7
+_success = 10
+_failure = 0
+
+[node11]
+type = RegTimer
+descript = addnewtimer
+timerid = 1
+waittime=60
+_success=12
+_failure=0
+
+[node12]
+type = WaitEvent
+descript = wait stop ims
+uuid=wcallid
+data=tid
+_timeout=2
+_success = 12
+_failure = 0

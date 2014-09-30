@@ -1,0 +1,25 @@
+/*
+   Copyright (c) 2009, 2010, Oracle and/or its affiliates. All rights reserved.
+
+   The MySQL Connector/C++ is licensed under the terms of the GPL
+   <http://www.gnu.org/licenses/old-licenses/gpl-2.0.html>, like most
+   MySQL Connectors. There are special exceptions to the terms and
+   conditions of the GPL as it is applied to this software, see the
+   FLOSS License Exception
+   <http://www.mysql.com/about/legal/licensing/foss-exception.html>.
+*/
+
+
+#define HAVE_DLFCN_H 1
+#define MYSQLCLIENT_STATIC_BINDING 1
+
+
+/*
+#if !defined(_WIN32) && !defined(HAVE_DLFCN_H) && !defined(MYSQLCLIENT_STATIC_BINDING)
+# define MYSQLCLIENT_STATIC_BINDING 1
+#endif
+
+#ifdef HAVE_DLFCN_H
+#include <dlfcn.h>
+#endif
+*/

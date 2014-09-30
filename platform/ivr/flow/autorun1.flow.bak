@@ -1,0 +1,158 @@
+[Var1]
+Type = int32
+Name = nCount
+
+[Var2]
+Type = string
+Name = strCALLID
+
+[Var3]
+Type = string
+Name = strCALLID2
+
+[Var5]
+Type = int32
+Name = nRecordCnt
+
+[Var6]
+Type = string
+Name = strDial
+
+[Var7]
+Type = string
+Name = strDial2
+
+
+[Conn1]
+Name = CC1数据库
+ConnStr = 10.36.159.33:3306;root;123456
+ConnNum = 10
+
+[Conn2]
+Name = CC2数据库
+ConnStr = 10.36.159.33:3306;root;123456
+ConnNum = 5
+
+
+[Node1]
+Descript=strDial赋值
+Type=Assign
+Exp=1000
+Result=strDial
+_Success=2
+_Failure=0
+
+
+[Node2]
+Descript=strDial2赋值
+Type=Assign
+Exp=1002
+Result=strDial2
+_Success=102
+_Failure=0
+
+
+[Node102]
+Descript=拨号1节点
+Type=Dial
+Callid=${_CALLID}
+NewCallid=strCALLID
+CalledNumber=${strDial}
+_Success=301
+_Failure=300
+_UserHangup=0
+
+
+[Node301]
+Descript=_CALL_BEGIN_TIME赋值
+Type=Assign
+Exp=${_SECOND}
+Result=_CALL_BEGIN_TIME
+_Success=103
+_Failure=0
+
+
+
+[Node103]
+Descript=拨号2节点
+Type=Dial
+Callid=${_CALLID}
+NewCallid=strCALLID2
+CalledNumber=${strDial2}
+_Success=104
+_Failure=300
+_UserHangup=0
+
+
+
+[Node104]
+Descript=桥接节点
+Type=Bridge
+Callid=${strCALLID}
+Callid2=${strCALLID2}
+_Success=302
+_Failure=300
+_UserHangup=0
+
+[Node302]
+Descript=_CALL_ANSWER_TIME赋值
+Type=Assign
+Exp=${_SECOND}
+Result=_CALL_ANSWER_TIME
+_Success=201
+_Failure=0
+
+
+[Node201]
+Descript=_ANI赋值
+Type=Assign
+Exp=${strDial}
+Result=_ANI
+_Success=202
+_Failure=0
+
+
+[Node202]
+Descript=_DNIS赋值
+Type=Assign
+Exp=${strDial2}
+Result=_DNIS
+_Success=203
+_Failure=0
+
+[Node203]
+Descript=_CALLID赋值
+Type=Assign
+Exp=${strCALLID2}
+Result=_CALLID
+_Success=105
+_Failure=0
+
+
+[Node105]
+Descript=构造录音文件名
+Type=Assign
+Exp=${_ANI}_${_DNIS}_${_DATE}_${_TIME}_${_CALLID}.wav
+Result=_RECORD_FILE_NAME
+_Success=106
+_Failure=106
+
+
+[Node106]
+Descript=录音节点
+Type=Record
+Callid=${strCALLID}
+RecordFile=${_RECORD_FILE_NAME}
+_Success=300
+_Failure=300
+_UserHangup=0
+
+
+[Node300]
+Descript=系统挂机
+Type=Hangup
+Callid=${_CALLID}
+_Success=0
+_Failure=0
+_UserHangup=0
+

@@ -1,0 +1,62 @@
+
+[var1]
+type = string
+name = result
+initial = 
+
+[var2]
+type = string
+name = data
+initial = 
+
+[var3]
+type = string
+name = uuid
+initial = 
+
+[node1]
+type = Answer
+descript = answer
+Callid = ${_CALLID}
+_Success = 2
+_Failure = 2
+
+[node2]
+type = Assign
+descript = result=rand(10,100)
+Result = result
+Exp = rand(10,100)
+_Success = 3
+_Failure = 3
+
+[node3]
+type = Compare
+descript = 10<=result
+Exp = ${result}>=10
+_Success = 4
+_Failure=0
+
+[node4]
+type = Compare
+descript = result<=100
+Exp = ${result}<=100
+_Success = 5
+_Failure=0
+
+[node5]
+type = RegTimer
+descript = wait rand
+TimerId = 1
+WaitTime = 1
+_Success = 6
+_Failure = 6
+
+[node6]
+type = WaitEvent
+descript = 
+UUid = uuid
+Data = data
+_Success = 6
+_Failure=0
+_TIMEOUT = 2
+

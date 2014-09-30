@@ -1,0 +1,65 @@
+[VAR4]
+TYPE = string
+NAME = VAR_UUID
+
+[VAR5]
+TYPE = string
+NAME = VAR_DATA
+
+[NODE1]
+TYPE = ANSWER
+CALLID = ${_CALLID}
+DESCRIPT = ANS
+_SUCCESS = 2
+_FAILURE = 0
+_USERHANGUP = 0
+
+[NODE2]
+TYPE = WAITEVENT
+UUID = VAR_UUID
+DATA = VAR_DATA
+_SUCCESS = 3
+_FAILURE = 0
+
+[Node3]
+Type = play
+Descript = »¶Ó­´Ê
+Callid = ${_CALLID}
+PlayFile = hold_music.wav
+Delay = 1
+AllowInterrupt = 1
+_Success =  201
+_Failure =  201
+_UserInterrupt = 201
+_FileNotFound = 201
+_UserHangup=201
+
+[NODE201]
+TYPE = WAITEVENT
+UUID = VAR_UUID
+DATA = VAR_DATA
+_SUCCESS = 202
+_FAILURE = 202
+_ANSWER = 202
+_ALERT = 202
+_HANGUP = 0
+_PLAY_END = 202
+_FILENOTEXIST = 202
+_GETDIGIT_SUCC = 202
+_GETDIGIT_FAIL = 202
+_RECORD_START = 202
+_RECORD_END = 202
+_CHANLE_DESTORY = 202
+_BRIDGE = 202
+_UNBRIDGE = 202
+_TIMEOUT = 202
+_UNKNOWN = 202
+
+[Node202]
+type = WriteLog
+descript = Log
+exp = uuid:${VAR_UUID}; data:${VAR_DATA}
+businame = LXB
+_success = 201
+_failure = 201
+

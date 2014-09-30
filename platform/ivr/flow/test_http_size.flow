@@ -1,0 +1,171 @@
+
+[var1]
+type = string
+name = result
+initial = 
+
+[var2]
+type = int32
+name = count
+initial = 200
+
+[node1]
+type = Answer
+descript = answer call
+Callid = ${_CALLID}
+_Success = 2
+_Failure = 2
+
+[node2]
+type = HTTP
+descript = recv 20
+Outtype = POST
+timeout = 3
+Url = http://10.23.240.177:8900/ivrtest/sizetest?size=20
+Resp = result
+_Success = 3
+_Failure = 0
+
+[node3]
+type = Compare
+descript = size is 20
+Exp = length(${result})==20
+_Success = 4
+_Failure = 0
+
+[node4]
+type = HTTP
+descript = recv 4095
+Outtype = POST
+timeout = 3
+Url = http://10.23.240.177:8900/ivrtest/sizetest?size=4095
+Resp = result
+_Success = 5
+_Failure = 0
+
+[node5]
+type = Compare
+descript = size is 4095
+Exp = length(${result})==4095
+_Success = 6
+_Failure = 0
+
+[node6]
+type = Compare
+descript = count > 0
+Exp = ${count}=>=0
+_Success = 7
+_Failure = 10
+
+[node7]
+type = HTTP
+descript = recv 4095
+Outtype = POST
+timeout = 3
+Url = http://10.23.240.177:8900/ivrtest/sizetest?size=4095
+Resp = result
+_Success = 8
+_Failure = 0
+
+[node8]
+type = Compare
+descript = size is 4095
+Exp = length(${result})==4095
+_Success = 9
+_Failure = 0
+
+[node9]
+type = Assign
+descript = --count
+Result = count
+Exp = ${count}-1
+_Success = 6
+_Failure = 6
+
+[node10]
+type = Assign
+descript = count=200
+Result = count
+Exp = ${count}-1
+_Success = 11
+_Failure = 11
+
+[node11]
+type = Compare
+descript = count > 0
+Exp = ${count}=>=0
+_Success = 12
+_Failure = 15
+
+[node12]
+type = Assign
+descript = result=none
+Result = result
+Exp = none
+_Success = 13
+_Failure = 13
+
+[node13]
+type = HTTP
+descript = recv 4096
+Outtype = POST
+timeout = 3
+Url = http://10.23.240.177:8900/ivrtest/sizetest?size=4096
+Resp = result
+_Success = 0
+_Failure = 14
+
+[node14]
+type = Assign
+descript = --count
+Result = count
+Exp = ${count}-1
+_Success = 11
+_Failure = 11
+
+[node15]
+type = Assign
+descript = count=200
+Result = count
+Exp = ${count}-1
+_Success = 16
+_Failure = 16
+
+[node16]
+type = Compare
+descript = count > 0
+Exp = ${count}=>=0
+_Success = 17
+_Failure = 20
+
+[node17]
+type = Assign
+descript = result=none
+Result = result
+Exp = none
+_Success = 18
+_Failure = 18
+
+[node18]
+type = HTTP
+descript = recv 4097
+Outtype = POST
+timeout = 3
+Url = http://10.23.240.177:8900/ivrtest/sizetest?size=4097
+Resp = result
+_Success = 0
+_Failure = 19
+
+[node19]
+type = Assign
+descript = --count
+Result = count
+Exp = ${count}-1
+_Success = 16
+_Failure = 16
+
+[node20]
+type= hangup
+callid=${_callid}
+_success = 0
+_failure = 0
