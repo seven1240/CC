@@ -65,10 +65,10 @@
 
 
 #二次开发手册
-1. [agentbar开发手册](./tools/agentbar/doc/develop_manual.doc)
-2. [IVR开发手册](./platform/ivr/doc/develop_manual.doc)
+1. [agentbar开发手册](./tools/agentbar/doc/develop_manual.pdf)
+2. [IVR开发手册](./platform/ivr/doc/develop_manual.pdf)
 
-#安装使用
+#编译&&安装
 1. [How To INSTALL](./INSTALL.md)
 
 #License
