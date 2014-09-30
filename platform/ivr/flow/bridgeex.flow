@@ -1,0 +1,67 @@
+[Var1]
+Type = string
+Name = strCALLID1
+[Var2]
+Type = string
+Name = strCALLID2
+[Var3]
+Type = string
+Name = strInput
+
+[Node1]
+Descript=拨号节点
+Type=Dial
+Callid=${_CALLID}
+NewCallid=strCALLID1
+calltype=1
+callednumber=59926119@10.0.9.17
+CallerNumber=01059704020
+_Success=14
+_Failure=0
+_UserHangup=0
+
+[Node14]
+Descript=欢迎词
+Type=getdigits
+Callid=${_CALLID}
+PlayFile=hold_music.wav
+maxlen=11
+minlen=8
+inputtimeout=5
+end=#
+var=strInput
+_Success= 4
+_Failure= 100
+_userinterrupt=4
+_FileNotFound= 4
+_UserHangup=0
+
+[Node4]
+Descript=桥接节点
+Type=Bridgeex
+callid=${_CALLID}
+calltype=1
+callernumber=01059704020
+callednumber=${strInput}@10.0.9.17
+_UserHangup=0
+_Success=5
+_Failure=100
+
+[Node5]
+Descript=录音节点
+Type=Record
+CallID=${_CALLID}
+Recordfile=${_CALLID}.wav
+_UserHangup=0
+_UserInterrupt=100
+_Success=100
+_Failure=100
+
+[Node100]
+Descript=结束节点-挂机
+Type=Hangup
+CallID=${_CALLID}
+_UserHangup=0
+_Success=0
+_Failure=0
+

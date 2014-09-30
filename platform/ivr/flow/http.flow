@@ -1,0 +1,11 @@
+[var1]
+type=string
+name=name
+
+[node19]
+type=http
+url=http://tc-crm-rd00.tc.baidu.com:8099/
+resp=name
+_success=0
+_failure=0
+

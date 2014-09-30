@@ -1,0 +1,58 @@
+[Var2]
+Type = string
+Name = strCALLID
+
+[Node1]
+Type=Answer
+Callid=${_CALLID}
+Descript=摘机
+_Success=11
+_Failure=0
+_UserHangup=0
+
+[Node11]
+type=play
+callid=${_CALLID}
+playfile=hold_music.wav
+allowinterrupt=1
+_success=14
+_failure=14
+_userinterrupt=14
+_filenotfound=14
+_userhangup=0
+
+[Node14]
+Descript=欢迎词
+Type=getdigits
+Callid=${_CALLID}
+PlayFile=hold_music.wav
+maxlen=6
+minlen=3
+inputtimeout=5
+end=#
+var=strCALLID
+_Success= 12
+_Failure= 12
+_userinterrupt=12
+_FileNotFound= 12
+_UserHangup=0
+
+[Node12]
+Descript=record
+Type=record
+callid=${_CALLID}
+recordfile=${_CALLID}.wav
+_Success=13
+_Failure=13
+_userinterrupt=13
+_UserHangup=0
+
+
+[Node13]
+Descript=系统挂机
+Type=Hangup
+Callid=${_CALLID}
+_Success=0
+_Failure=0
+_UserHangup=0
+

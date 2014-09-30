@@ -1,0 +1,107 @@
+[Var1]
+Type = resultset
+Name = rsTmp
+ 
+[Var2]
+Type = string
+Name = strTmp
+
+[Conn1]
+Name = CC1数据库
+ConnStr = 10.36.159.33:3306;root;123456
+ConnNum = 20
+
+[Node1]
+Descript=开始节点-摘机
+Type=Answer
+TimeOut=2000 
+_UserHangup=0 
+_Success=2
+_Failure=0
+_TimeOut=0
+
+[Node2]
+Descript=在数据库中插入
+Type=DB
+ConnectId=1
+Sql=insert into ivrtest values(1,"test")
+_Success=3
+_Failure=0
+
+#[Node3]
+#Descript=输出变量值到日志节点
+#Type=TraceLog
+#Trace=插入数据成功
+#Vars=_INBOUND_NUM, _OUTBOUND_NUM
+#MustBeDone=1
+#_UserHangup=0 
+#_Success=4 
+#_Failure=0 
+
+[Node4]
+Descript=在数据库中查询
+Type=DB
+ConnectId=1
+Sql=select * from ivrtest
+RsVarName=rsTmp
+_Success=5
+_Failure=0
+
+[Node5]
+Descript=比较节点
+Type=Compare
+Exp=reTmp.Next()!=0
+MustBeDone=1  
+_UserHangup=5
+_Success=6  
+_Failure=7 
+
+[Node6]
+Descript=取得当前记录的字段VALUE
+Type=Assign
+Exp=${rsTmp}.VALUE(1)
+Result=strTmp
+_Success=56
+_Failure=0
+
+[Node56]
+Descript=取得当前记录的字段VALUE
+Type=Assign
+Exp=${rsTmp}.VALUE(2)
+Result=strTmp
+_Success=5
+_Failure=0
+
+[Node7]
+Descript=在数据库中查询
+Type=DB
+ConnectId=1
+Sql=select * from ivrtest
+RsVarName=rsTmp
+_Success=9
+_Failure=0
+
+[Node9]
+Descript=取得当前记录的字段VALUE
+Type=Assign
+Exp=${rsTmp}.VALUE(2,2)
+Result=strTmp
+_Success=10
+_Failure=0
+
+[Node10]
+Descript=取得当前记录的字段VALUE
+Type=Assign
+Exp=${rsTmp}.VALUE(1000,3)
+Result=strTmp
+_Success=100
+_Failure=100
+
+[Node100]
+Descript=系统挂机
+Type=Hangup
+Callid=${_CALLID}
+_Success=0
+_Failure=0
+_UserHangup=0
+

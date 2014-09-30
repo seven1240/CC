@@ -1,0 +1,12 @@
+<configuration name="ccl_record.conf" description="CallCloud Record">
+    <settings>
+        <param name="rec-basedir" value="$${sounds_dir}"/>
+        <param name="max-thread" value="20"/>
+        <param name="dest-basedir" value="record"/>
+    </settings>
+
+    <tasklist>
+        <task value="ssh work@127.0.0.1 '[ -d `dirname /home/work/<dstfile>` ] || mkdir -p `dirname /home/work/<dstfile>` ]'; scp <srcfile> work@127.0.0.1:/home/work/<dstfile>; rm -fr <srcfile>"/>
+    </tasklist>
+
+</configuration>

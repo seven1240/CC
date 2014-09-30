@@ -1,0 +1,72 @@
+[VAR4]
+TYPE = string
+NAME = VAR_UUID
+
+[VAR5]
+TYPE = string
+NAME = VAR_DATA
+
+[VAR6]
+TYPE = string
+NAME = strInput
+
+[NODE1]
+TYPE = ANSWER
+CALLID = ${_CALLID}
+DESCRIPT = ANS
+_SUCCESS = 2
+_FAILURE = 0
+_USERHANGUP = 0
+
+[NODE2]
+TYPE = WAITEVENT
+UUID = VAR_UUID
+DATA = VAR_DATA
+_SUCCESS = 3
+_FAILURE = 0
+
+[Node3]
+Descript=»¶Ó­´Ê
+Type=getdigits
+Callid=${_CALLID}
+PlayFile=hold_music.wav1
+maxlen=11
+minlen=8
+inputtimeout=5
+end=#
+var=strInput
+_Success=201 
+_Failure=201 
+_userinterrupt=201
+_FileNotFound= 201
+_UserHangup=201
+
+[NODE201]
+TYPE = WAITEVENT
+UUID = VAR_UUID
+DATA = VAR_DATA
+_SUCCESS = 202
+_FAILURE = 202
+_ANSWER = 202
+_ALERT = 202
+_HANGUP = 0
+_PLAY_END = 202
+_FILENOTEXIST = 202
+_GETDIGIT_SUCC = 202
+_GETDIGIT_FAIL = 202
+_RECORD_START = 202
+_RECORD_END = 202
+_CHANLE_DESTORY = 202
+_BRIDGE = 202
+_UNBRIDGE = 202
+_TIMEOUT = 202
+_UNKNOWN = 202
+
+[NODE202]
+TYPE = WRITELOG
+DESCRIPT = LOG
+EXP = UUID:${VAR_UUID}; DATA:${VAR_DATA}
+BUSINAME = LXB
+_SUCCESS = 201
+_FAILURE = 201
+

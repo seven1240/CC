@@ -1,0 +1,49 @@
+[VAR4]
+TYPE = string
+NAME = VAR_UUID
+
+[VAR5]
+TYPE = string
+NAME = VAR_DATA
+
+[NODE1]
+TYPE = ANSWER
+CALLID = ${_CALLID}
+DESCRIPT = ANS
+_SUCCESS = 2
+_FAILURE = 0
+
+[NODE2]
+TYPE = WAITEVENT
+UUID = VAR_UUID
+DATA = VAR_DATA
+_ANSWER = 3
+_SUCCESS = 0
+_FAILURE = 0
+
+[NODE3]
+DESCRIPT = BRI
+TYPE = BRIDGEEX
+CALLID = ${_CALLID}
+CALLTYPE = 0
+CALLERNUMBER = ${_ANI}
+CALLEDNUMBER = 1005
+_SUCCESS = 200
+_FAILURE = 0
+
+[NODE200]
+TYPE = WAITEVENT
+UUID = VAR_UUID
+DATA = VAR_DATA
+_HANGUP = 0
+_SUCCESS = 201
+_FAILURE = 0
+
+[Node201]
+type = WriteLog
+descript = Log
+exp = uuid:${var_uuid}; data:${var_data}
+businame = LXB
+_success = 200
+_failure = 200
+

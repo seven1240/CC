@@ -1,0 +1,45 @@
+[var1]
+name=var_uuid
+type=string
+
+[var2]
+NaMe=var_data
+TyPe=string
+
+[node1]
+type=answer
+desc=Node1
+callid=${_CALLID}
+_success=2
+_Failure=2
+_userhangup=0
+
+[Node2]
+type=waitevent
+uuid = var_uuid
+data = var_data
+_answer = 3
+_success = 0
+_failure = 0
+
+[Node3]
+type = WriteLog
+descript = Log
+exp = uuid:${var_uuid}; data:${var_data}
+businame = LXB
+_success = 100
+_failure = 0
+
+[Node100]
+Descript=hangup
+Type=hangup
+CallID=${_CALLID}
+_Success=101
+_Failure=0
+
+[Node101]
+type=waitevent
+uuid = var_uuid
+data = var_data
+_success = 0
+_failure = 0

@@ -1,0 +1,259 @@
+[Var1]
+Type = int32
+Name = nCount
+
+[Var2]
+Type = string
+Name = strCALLID
+
+[Var3]
+Type = string
+Name = strUserInput
+
+[Var4]
+Type = resultset
+Name = rsTmp
+
+[Var5]
+Type = int32
+Name = nRecordCnt
+
+[Var6]
+Type = string
+Name = strTmp
+
+[Var7]
+Type = map
+Name = mapTmp
+
+[Var8]
+Type = string
+Name = strHttpResp
+
+
+[Conn1]
+Name = CC1数据库
+ConnStr = 10.36.159.33:3306;root;123456
+ConnNum = 20
+
+[Conn2]
+Name = CC2数据库
+ConnStr = 10.36.159.33:3306;root;123456
+ConnNum = 10
+
+[Node1]
+Descript=摘机
+Type=Answer
+Callid=${_CALLID}
+_Success=100
+_Failure=0
+_UserHangup=0
+
+
+[Node100]
+Descript=欢迎词
+Type=Play
+Callid=${_CALLID}
+PlayFile=ivr-welcome_to_freeswitch.wav
+Delay=10
+AllowInterrupt=1
+_Success= 101
+_Failure= 300
+_UserInterrupt=101
+_FileNotFound= 101
+_UserHangup=0
+
+
+[Node101]
+Descript=取得输入
+Type=Getdigits
+Callid=${_CALLID}
+PlayFile=ivr-enter_destination_telephone_number.wav
+MinLen=3
+MaxLen=5
+Repeat=3
+InputTimeOut=5000
+End=#
+InvalidFile=ivr-please_reenter_your_pin.wav
+Var=strUserInput
+_Success= 400
+_Failure= 300
+_UserHangup=0
+
+
+[Node400]
+Descript=判断用户输入号码位数是否正确
+Type=Compare
+Exp=LENGTH(${strUserInput}) == 4
+_Success=401
+_Failure=101
+
+
+[Node401]
+Descript=(数据库读取)判断用户输入是否是1234
+Type=Compare
+Exp=${strUserInput} == 1234
+_Success=402
+_Failure=501
+
+[Node402]
+Descript=在数据库中查询
+Type=DB
+ConnectId=1
+Sql=select * from ivr.blacklist where ani=${_ANI}
+RsVarName=rsTmp
+_Success=403
+_Failure=300
+
+[Node403]
+Descript=滚动结果集
+Type=Compare
+Exp=${rsTmp}.NEXT() != 0
+_Success=404
+_Failure=300
+
+[Node404]
+Descript=取得当前记录的字段VALUE
+Type=Assign
+Exp=${rsTmp}.VALUE(2)
+Result=strTmp
+_Success=403
+_Failure=403
+
+
+
+
+
+[Node501]
+Descript=(配置文件读取)判断用户输入是否是1235
+Type=Compare
+Exp=${strUserInput} == 1235
+_Success=502
+_Failure=601
+
+
+[Node502]
+Descript=读取金鳞配置
+Type=ReadIni
+FileName=/home/rd/app/ecom/ccservice/callcloud/ivr/project/jinlin/conf/route.ini
+SessionName=${_DNIS}
+MapVarName=mapTmp
+_Success=503
+_Failure=300
+
+
+[Node503]
+Descript=读取calledno_1赋值给strUserInput
+Type=Assign
+Exp=${mapTmp}.VALUE(calledno_1)
+Result=strUserInput
+_Success=103
+_Failure=300
+
+
+
+
+
+[Node601]
+Descript=(HTTP读取)判断用户输入是否是1236
+Type=Compare
+Exp=${strUserInput} == 1236
+_Success=602
+_Failure=102
+
+
+[Node602]
+Descript=HTTP调用
+Type=Http
+Url=http://10.36.159.33:8080/app/test.jsp?ani=${_ANI}
+Resp=strHttpResp
+_Success=603
+_Failure=300
+
+
+[Node603]
+Descript=判断是否通过HTTP调用
+Type=Compare
+Exp=${strHttpResp} === yes
+_Success=300
+_Failure=100
+
+
+
+
+[Node102]
+Descript=nCount赋值为1
+Type=Assign
+Exp=( (1+((12+50)/2+10) )-20*10 )+9*( 10* (18-11)-20) - 291
+Result=nCount
+_Success=201
+_Failure=300
+
+[Node201]
+Descript=判断是否需要进行下一次外拨
+Type=Compare
+Exp=${nCount} <= 3
+_Success=202
+_Failure=300
+
+[Node202]
+Descript=nCount计数累加
+Type=Assign
+Exp=${nCount} + 1
+Result=nCount
+_Success=103
+_Failure=103
+
+
+
+[Node103]
+Descript=拨号节点
+Type=Dial
+Callid=${_CALLID}
+NewCallid=strCALLID
+CalledNumber=${strUserInput}
+_Success=104
+_Failure=201
+_UserHangup=0
+
+
+
+[Node104]
+Descript=桥接节点
+Type=Bridge
+Callid=${_CALLID}
+Callid2=${strCALLID}
+_Success=105
+_Failure=105
+_UserHangup=0
+
+
+[Node105]
+Descript=构造录音文件名
+Type=Assign
+Exp=${_ANI}_${_DNIS}_${_DATE}_${_TIME}_${_CALLID}.wav
+Result=_RECORD_FILE_NAME
+_Success=106
+_Failure=106
+
+
+[Node106]
+Descript=录音节点
+Type=Record
+Callid=${strCALLID}
+RecordFile=${_RECORD_FILE_NAME}
+_Success=300
+_Failure=300
+_UserHangup=0
+
+
+[Node300]
+Descript=系统挂机
+Type=Hangup
+Callid=${_CALLID}
+_Success=0
+_Failure=0
+_UserHangup=0
+
+
+

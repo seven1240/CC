@@ -1,0 +1,19 @@
+[var1]
+name=TeStVaR
+type=string
+
+[var2]
+NaMe=var2
+TyPe=string
+
+[VAR3]
+NAME=var3
+TYPE=string
+
+[node1]
+type=Assign
+desc=test
+exp=STARS AUTORUN ${_CALLID}
+result=var2
+_success=0
+_Failure=0
