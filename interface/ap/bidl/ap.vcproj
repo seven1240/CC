@@ -19,7 +19,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../../../bgcc/output/include;../../acd/bidl"
+				AdditionalIncludeDirectories="../../../dep/bgcc/output/include;../../acd/bidl"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -66,7 +66,7 @@ copy *.h ..\..\output\ap\include
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="../../../../bgcc/output/include;../../acd/bidl"
+				AdditionalIncludeDirectories="../../../dep/bgcc/output/include;../../acd/bidl"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
 				RuntimeLibrary="0"
 				RuntimeTypeInfo="TRUE"

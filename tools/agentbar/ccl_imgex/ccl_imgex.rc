@@ -1,0 +1,160 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,4,1
+ PRODUCTVERSION 1,0,4,1
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "FileDescription", "扩展资源库"
+            VALUE "FileVersion", "1, 0, 4, 1"
+            VALUE "InternalName", "ccl_imge"
+            VALUE "LegalCopyright", "版权所有 (C) 2013"
+            VALUE "OriginalFilename", "ccl_imge.dll"
+            VALUE "ProductName", " 扩展资源库"
+            VALUE "ProductVersion", "1, 0, 4, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BMP_SIGNIN          BITMAP                  "img\\有效_签入.bmp"
+IDB_BMP_SIGNOUT         BITMAP                  "img\\有效_签出.bmp"
+IDB_BMP_ANSWER          BITMAP                  "img\\有效_接听.bmp"
+IDB_BMP_CALLOUT         BITMAP                  "img\\有效_呼出.bmp"
+IDB_BMP_SENDDTMF        BITMAP                  "img\\有效_拨打分机.bmp"
+IDB_BMP_HANGUP          BITMAP                  "img\\有效_挂断.bmp"
+IDB_BMP_HOLD            BITMAP                  "img\\有效_保持.bmp"
+IDB_BMP_RETRIEVE        BITMAP                  "img\\有效_保持接回.bmp"
+IDB_BMP_CONSULT         BITMAP                  "img\\有效_咨询.bmp"
+IDB_BMP_RECONNECT       BITMAP                  "img\\有效_咨询接回.bmp"
+IDB_BMP_TRANSFER        BITMAP                  "img\\有效_咨询转移.bmp"
+IDB_BMP_CONFERENCE      BITMAP                  "img\\有效_咨询会议.bmp"
+IDB_BMP_SSTRANSFER      BITMAP                  "img\\有效_通话转移.bmp"
+IDB_BMP_REST            BITMAP                  "img\\有效_休息.bmp"
+IDB_BMP_READY           BITMAP                  "img\\有效_接听就绪.bmp"
+IDB_BMP_BUSY            BITMAP                  "img\\有效_呼出就绪.bmp"
+IDB_BMP_SKILLCHANGE     BITMAP                  "img\\有效_技能切换.bmp"
+IDB_BMP_FENGE           BITMAP                  "img\\分隔条.bmp"
+IDB_BMP_MS_SIGNIN       BITMAP                  "img\\鼠标经过_签入.bmp"
+IDB_BMP_MS_SIGNOUT      BITMAP                  "img\\鼠标经过_签出.bmp"
+IDB_BMP_MS_ANSWER       BITMAP                  "img\\鼠标经过_接听.bmp"
+IDB_BMP_MS_CALLOUT      BITMAP                  "img\\鼠标经过_呼出.bmp"
+IDB_BMP_MS_SENDDTMF     BITMAP                  "img\\鼠标经过_拨打分机.bmp"
+IDB_BMP_MS_HANGUP       BITMAP                  "img\\鼠标经过_挂断.bmp"
+IDB_BMP_MS_HOLD         BITMAP                  "img\\鼠标经过_保持.bmp"
+IDB_BMP_MS_RETRIEVE     BITMAP                  "img\\鼠标经过_保持接回.bmp"
+IDB_BMP_MS_CONSULT      BITMAP                  "img\\鼠标经过_咨询.bmp"
+IDB_BMP_MS_RECONNECT    BITMAP                  "img\\鼠标经过_咨询接回.bmp"
+IDB_BMP_MS_TRANSFER     BITMAP                  "img\\鼠标经过_咨询转移.bmp"
+IDB_BMP_MS_CONFERENCE   BITMAP                  "img\\鼠标经过_咨询会议.bmp"
+IDB_BMP_MS_SSTRANSFER   BITMAP                  "img\\鼠标经过_通话转移.bmp"
+IDB_BMP_MS_REST         BITMAP                  "img\\鼠标经过_休息.bmp"
+IDB_BMP_MS_READY        BITMAP                  "img\\鼠标经过_接听就绪.bmp"
+IDB_BMP_MS_BUSY         BITMAP                  "img\\鼠标经过_呼出就绪.bmp"
+IDB_BMP_MS_SKILLCHANGE  BITMAP                  "img\\鼠标经过_技能切换.bmp"
+IDB_BMP_IN_SIGNIN       BITMAP                  "img\\无效_签入.bmp"
+IDB_BMP_IN_SIGNOUT      BITMAP                  "img\\无效_签出.bmp"
+IDB_BMP_IN_ANSWER       BITMAP                  "img\\无效_接听.bmp"
+IDB_BMP_IN_CALLOUT      BITMAP                  "img\\无效_呼出.bmp"
+IDB_BMP_IN_SENDDTMF     BITMAP                  "img\\无效_拨打分机.bmp"
+IDB_BMP_IN_HANGUP       BITMAP                  "img\\无效_挂断.bmp"
+IDB_BMP_IN_HOLD         BITMAP                  "img\\无效_保持.bmp"
+IDB_BMP_IN_RETRIEVE     BITMAP                  "img\\无效_保持接回.bmp"
+IDB_BMP_IN_CONSULT      BITMAP                  "img\\无效_咨询.bmp"
+IDB_BMP_IN_RECONNECT    BITMAP                  "img\\无效_咨询接回.bmp"
+IDB_BMP_IN_TRANSFER     BITMAP                  "img\\无效_咨询转移.bmp"
+IDB_BMP_IN_CONFERENCE   BITMAP                  "img\\无效_咨询会议.bmp"
+IDB_BMP_IN_SSTRANSFER   BITMAP                  "img\\无效_通话转移.bmp"
+IDB_BMP_IN_REST         BITMAP                  "img\\无效_休息.bmp"
+IDB_BMP_IN_READY        BITMAP                  "img\\无效_接听就绪.bmp"
+IDB_BMP_IN_BUSY         BITMAP                  "img\\无效_呼出就绪.bmp"
+IDB_BMP_IN_SKILLCHANGE  BITMAP                  "img\\无效_技能切换.bmp"
+IDB_BMP_BACKGROUND      BITMAP                  "img\\BACKGROUND.bmp"
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,605 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\AgentMonitor.rc2""  // 非 Microsoft Visual C++ 编辑资源\r\n"
+    "#include ""afxres.rc""         // 标准组件\r\n"
+    "#include ""afxprint.rc""       // 打印/打印预览资源\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\AgentMonitor.ico"
+IDR_AgentMonitorTYPE    ICON                    "res\\AgentMonitorDoc.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "文件(&F)"
+    BEGIN
+        MENUITEM "初始化",                      ID_32771
+        MENUITEM "反初始化",                    ID_MENU_UNINIT
+        MENUITEM SEPARATOR
+        MENUITEM "选项...",                     ID_MENU_OPTIONS
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&X)",                    ID_APP_EXIT
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "关于 AgentMonitor(&A)...",    ID_APP_ABOUT
+    END
+END
+
+IDR_MENU_AGENT_OPERATION MENU 
+BEGIN
+    POPUP "座席操作"
+    BEGIN
+        MENUITEM "接听就绪",                    ID_32774
+        MENUITEM "呼出就绪",                    ID_MENU_AGENT_SET_BUSY
+        MENUITEM "签出",                        ID_MENU_AGENT_SIGNOUT
+        MENUITEM SEPARATOR
+        MENUITEM "监听",                        ID_MENU_AGENT_MONITOR
+        MENUITEM "停止监听",                    ID_MENU_AGENT_STOP_MONITOR
+        MENUITEM "强插",                        ID_MENU_AGENT_INSERT
+        MENUITEM "停止强插",                    ID_MENU_AGENT_STOP_INSERT
+        MENUITEM "监听强插转化",                ID_MENU_AGENT_INSERT_MONITOR_CONVERT
+
+        MENUITEM "强拆",                        ID_MENU_AGENT_BREAK
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "关于 AgentMonitor"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "AgentMonitor Version 1.0",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2012",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDD_MAINFORMVIEW DIALOGEX 0, 0, 322, 202
+STYLE DS_SETFONT | WS_CHILD
+FONT 9, "宋体", 0, 0, 0x0
+BEGIN
+    CONTROL         "",IDC_CCAGENTBARCTRL1,
+                    "{6D4733B4-8E49-495C-9F2B-27606CEB20E3}",WS_TABSTOP,23,
+                    19,235,25
+END
+
+IDD_AGENTDETAILFORMVIEW DIALOGEX 0, 0, 711, 200
+STYLE DS_SETFONT | WS_CHILD
+FONT 9, "宋体", 0, 0, 0x0
+BEGIN
+    CONTROL         "接听就绪",IDC_CHECK_IDLE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,14,88,10
+    CONTROL         "呼出就绪",IDC_CHECK_BUSY,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,101,14,75,10
+    CONTROL         "休息",IDC_CHECK_REST,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,184,14,67,10
+    CONTROL         "通话中",IDC_CHECK_TALKING,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,258,14,73,10
+    CONTROL         "",IDC_LIST2,"SysListView32",LVS_ALIGNLEFT | WS_BORDER | 
+                    WS_TABSTOP,7,51,697,142
+    CONTROL         "建立通话",IDC_CHECK_TALKING_PROGRESS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,338,14,89,10
+    CONTROL         "质检",IDC_CHECK_MONITOR,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,437,14,68,10
+    CONTROL         "其他",IDC_CHECK_OTHER,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,513,14,72,10
+    LTEXT           "全部",IDC_STATIC_ALL,601,15,98,8
+    PUSHBUTTON      "强制签出所有座席",IDC_BUTTON_FORCE_SIGNOUT_ALL,660,40,
+                    23,14,NOT WS_VISIBLE
+    LTEXT           "座席状态",IDC_STATIC_AGENTS_TITLE,337,0,80,12
+END
+
+IDD_DIALOG_OPTIONS DIALOGEX 0, 0, 433, 355
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "选项"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,7,334,50,14
+    PUSHBUTTON      "取消",IDCANCEL,376,334,50,14
+    LTEXT           "CTI主IP地址:",IDC_STATIC,21,20,46,8
+    EDITTEXT        IDC_EDIT_MAINIP,73,17,65,14,ES_AUTOHSCROLL
+    LTEXT           "CTI备IP地址:",IDC_STATIC,21,42,46,8
+    EDITTEXT        IDC_EDIT_SLAVEIP,73,39,65,14,ES_AUTOHSCROLL
+    LTEXT           "CTI端口:",IDC_STATIC,36,60,31,8
+    EDITTEXT        IDC_EDIT_AGENTPASS,198,36,65,14,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    LTEXT           "座席密码:",IDC_STATIC,154,39,36,8
+    EDITTEXT        IDC_EDIT_PORT,72,57,65,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_AGENTID,198,17,65,14,ES_AUTOHSCROLL
+    LTEXT           "座席ID:",IDC_STATIC,163,20,27,8
+    LTEXT           "座席号码:",IDC_STATIC,154,63,36,8
+    EDITTEXT        IDC_EDIT_AGENTNUM,198,60,65,14,ES_AUTOHSCROLL
+    LTEXT           "技能:",IDC_STATIC,170,81,20,8
+    EDITTEXT        IDC_EDIT_SKILL,198,78,65,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ATAG,328,36,65,14,ES_AUTOHSCROLL
+    LTEXT           "ATag:",IDC_STATIC,302,39,20,8
+    EDITTEXT        IDC_EDIT_TIMEOUT,328,17,65,14,ES_AUTOHSCROLL
+    LTEXT           "超时时间:",IDC_STATIC,286,20,36,8
+    LTEXT           "CTag:",IDC_STATIC,302,63,20,8
+    EDITTEXT        IDC_EDIT_CTAG,328,60,65,14,ES_AUTOHSCROLL
+    LTEXT           "SIPIP地址:",IDC_STATIC,30,105,37,8
+    EDITTEXT        IDC_EDIT_SIPIP,73,102,65,14,ES_AUTOHSCROLL
+    LTEXT           "SIP端口:",IDC_STATIC,160,105,30,8
+    EDITTEXT        IDC_EDIT_SIPPORT,198,102,65,14,ES_AUTOHSCROLL
+    LTEXT           "SIP密码:",IDC_STATIC,160,132,30,8
+    EDITTEXT        IDC_EDIT_SIPPASS,198,129,65,14,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    LTEXT           "SIP号码:",IDC_STATIC,37,133,30,8
+    EDITTEXT        IDC_EDIT_SIPNUM,73,130,65,14,ES_AUTOHSCROLL
+    GROUPBOX        "账号设置",IDC_STATIC,7,3,410,154
+    GROUPBOX        "监控的技能组设置",IDC_STATIC,7,170,412,42
+    LTEXT           "技能组:",IDC_STATIC,23,191,28,8
+    EDITTEXT        IDC_EDIT_MAINIP_SKILL_LIST,63,188,175,14,ES_AUTOHSCROLL
+    CONTROL         "集成SIP电话",IDC_CHECK_SIP_INTERGRATE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,285,105,59,10
+    LTEXT           "*用英文逗号隔开，例如 ""咨询,技术""",IDC_STATIC,248,194,
+                    160,8
+    GROUPBOX        "显示的座席信息项及顺序",IDC_STATIC,7,221,412,105
+    LTEXT           "不显示的信息项",IDC_STATIC,40,234,57,8
+    LTEXT           "显示的信息项",IDC_STATIC,244,235,49,8
+    LISTBOX         IDC_LIST1,241,248,96,69,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LIST3,37,248,102,69,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "->",IDC_BUTTON_ADD,166,289,41,14
+    PUSHBUTTON      "<-",IDC_BUTTON_DEL,167,263,39,14
+    PUSHBUTTON      "上移",IDC_BUTTON_UP,351,259,32,20
+    PUSHBUTTON      "下移",IDC_BUTTON_DOWN,351,290,32,20
+END
+
+IDD_SYSINFOFORMVIEW DIALOGEX 0, 0, 357, 200
+STYLE DS_SETFONT | WS_CHILD
+FONT 9, "宋体", 0, 0, 0x0
+BEGIN
+    LTEXT           "座席数：",IDC_STATIC,67,12,34,10
+    LTEXT           "呼叫数：",IDC_STATIC,67,35,34,10
+    LTEXT           "IVR呼叫数：",IDC_STATIC,55,58,45,10
+    LTEXT           "座席呼叫数：",IDC_STATIC,50,81,51,10
+    LTEXT           "私有队列的排队呼叫数：",IDC_STATIC,9,127,92,10
+    LTEXT           "技能队列的排队呼叫数：",IDC_STATIC,10,104,91,10
+    LTEXT           "静态",IDC_STATIC_TOTAL_AGENTS,115,12,81,8
+    LTEXT           "静态",IDC_STATIC_TOTAL_CALLS,115,35,81,8
+    LTEXT           "静态",IDC_STATIC_IVR_CALLS,115,58,81,8
+    LTEXT           "静态",IDC_STATIC_AGENT_CALLS,115,81,81,8
+    LTEXT           "静态",IDC_STATIC_QUEUE_CALLS,115,104,81,8
+    LTEXT           "静态",IDC_STATIC_PRIV_QUEUE_CALLS,115,127,81,8
+END
+
+IDD_QUEUEDETAILFORMVIEW DIALOGEX 0, 0, 644, 200
+STYLE DS_SETFONT | WS_CHILD
+FONT 9, "宋体", 0, 0, 0x0
+BEGIN
+    LTEXT           "队列状态",IDC_STATIC_QUEUE_STATUS,331,7,110,14
+    CONTROL         "",IDC_LIST2,"SysListView32",LVS_ALIGNLEFT | WS_BORDER | 
+                    WS_TABSTOP,99,101,280,50
+END
+
+IDD_PRIVQUEUEDIALOG DIALOGEX 0, 0, 439, 260
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "私有队列"
+FONT 9, "宋体", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,7,236,50,16,NOT WS_VISIBLE
+    PUSHBUTTON      "取消",IDCANCEL,382,236,50,16,NOT WS_VISIBLE
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_ALIGNLEFT | WS_BORDER | 
+                    WS_TABSTOP,7,20,425,232
+    LTEXT           "坐席的私有队列列表",IDC_STATIC_PRIV_QUEUE,122,4,143,12
+END
+
+IDD_DIALOG_CONFIRM DIALOGEX 0, 0, 160, 68
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "注意"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,57,40,50,14
+    LTEXT           "修改配置可能需要重新签入，使配置生效！",IDC_STATIC,41,
+                    14,110,22
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,14,21,20
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "AgentMonitor.exe"
+            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "OriginalFilename", "AgentMonitor.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "翻译", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_MAINFORMVIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 315
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 195
+    END
+
+    IDD_AGENTDETAILFORMVIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 704
+        TOPMARGIN, 1
+        BOTTOMMARGIN, 193
+    END
+
+    IDD_DIALOG_OPTIONS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 426
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 348
+    END
+
+    IDD_SYSINFOFORMVIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 350
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 193
+    END
+
+    IDD_QUEUEDETAILFORMVIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 637
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 193
+    END
+
+    IDD_PRIVQUEUEDIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 432
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 252
+    END
+
+    IDD_DIALOG_CONFIRM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 153
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 61
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_MAINFORMVIEW DLGINIT
+BEGIN
+    IDC_CCAGENTBARCTRL1, 0x376, 127, 0
+0x0000, 0x0000, 0x0000, 0x0001, 0x247c, 0x0000, 0x03ed, 0x0000, 0x0000, 
+0x0000, 0x3204, 0x3130, 0x0731, 0x3032, 0x3131, 0x3231, 0x0433, 0x3131, 
+0x3530, 0xffff, 0xffff, 0x0101, 0xd704, 0xd1c9, 0x0caf, 0x3031, 0x332e, 
+0x2e36, 0x3531, 0x2e39, 0x3931, 0x310c, 0x2e30, 0x3633, 0x312e, 0x3935, 
+0x312e, 0x1039, 0x0027, 0xb800, 0x000b, 0x0000, 0x310c, 0x2e30, 0x3633, 
+0x312e, 0x3935, 0x362e, 0x7c30, 0x001f, 0x0400, 0x3131, 0x3530, 0x3104, 
+0x3332, 0x0034, 0x6103, 0x7467, 0xffff, 0xffff, 0x0101, 0xffff, 0xffff, 
+"\000" 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "AgentMonitor\n\nAgentMonitor\n\n\nAgentMonitor.Document\nAgentMonitor.Document"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "AgentMonitor"
+    AFX_IDS_IDLEMESSAGE     "就绪"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "创建新文档\n新建"
+    ID_FILE_OPEN            "打开现有文档\n打开"
+    ID_FILE_CLOSE           "关闭活动文档\n关闭"
+    ID_FILE_SAVE            "保存活动文档\n保存"
+    ID_FILE_SAVE_AS         "用新名称保存活动文档\n另存为"
+    ID_FILE_PAGE_SETUP      "更改打印选项\n页面设置"
+    ID_FILE_PRINT_SETUP     "更改打印机选项和打印选项\n打印设置"
+    ID_FILE_PRINT           "打印活动文档\n打印"
+    ID_FILE_PRINT_PREVIEW   "显示整页\n打印预览"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "显示程序信息、版本号和版权\n关于"
+    ID_APP_EXIT             "退出应用程序；提示保存文档\n退出"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "打开此文档"
+    ID_FILE_MRU_FILE2       "打开此文档"
+    ID_FILE_MRU_FILE3       "打开此文档"
+    ID_FILE_MRU_FILE4       "打开此文档"
+    ID_FILE_MRU_FILE5       "打开此文档"
+    ID_FILE_MRU_FILE6       "打开此文档"
+    ID_FILE_MRU_FILE7       "打开此文档"
+    ID_FILE_MRU_FILE8       "打开此文档"
+    ID_FILE_MRU_FILE9       "打开此文档"
+    ID_FILE_MRU_FILE10      "打开此文档"
+    ID_FILE_MRU_FILE11      "打开此文档"
+    ID_FILE_MRU_FILE12      "打开此文档"
+    ID_FILE_MRU_FILE13      "打开此文档"
+    ID_FILE_MRU_FILE14      "打开此文档"
+    ID_FILE_MRU_FILE15      "打开此文档"
+    ID_FILE_MRU_FILE16      "打开此文档"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "切换到下一个窗格\n下一窗格"
+    ID_PREV_PANE            "切换回上一个窗格\n上一窗格"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "将活动窗口拆分为多个窗格\n拆分"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_CLEAR           "清除选定内容\n清除"
+    ID_EDIT_CLEAR_ALL       "清除全部内容\n全部清除"
+    ID_EDIT_COPY            "复制选定内容并将其放到剪贴板上\n复制"
+    ID_EDIT_CUT             "剪切选定内容并将其放到剪贴板上\n剪切"
+    ID_EDIT_FIND            "查找指定的文本\n查找"
+    ID_EDIT_PASTE           "插入剪贴板内容\n粘贴"
+    ID_EDIT_REPEAT          "重复上一操作\n重复"
+    ID_EDIT_REPLACE         "用其他文本替换特定的文本\n替换"
+    ID_EDIT_SELECT_ALL      "选定整个文档\n全选"
+    ID_EDIT_UNDO            "撤消上一操作\n撤消"
+    ID_EDIT_REDO            "恢复上次撤消的操作\n重做"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "显示或隐藏工具栏\n切换工具栏"
+    ID_VIEW_STATUS_BAR      "显示或隐藏状态栏\n切换状态栏"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "更改窗口大小"
+    AFX_IDS_SCMOVE          "更改窗口位置"
+    AFX_IDS_SCMINIMIZE      "将窗口缩小为图标"
+    AFX_IDS_SCMAXIMIZE      "使窗口最大化显示"
+    AFX_IDS_SCNEXTWINDOW    "切换到下一个文档窗口"
+    AFX_IDS_SCPREVWINDOW    "切换到前一个文档窗口"
+    AFX_IDS_SCCLOSE         "关闭活动窗口并提示保存文档"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "将窗口恢复到正常大小"
+    AFX_IDS_SCTASKLIST      "激活任务列表"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "关闭打印预览模式\n取消预览"
+END
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\AgentMonitor.rc2"  // 非 Microsoft Visual C++ 编辑资源
+#include "afxres.rc"         // 标准组件
+#include "afxprint.rc"       // 打印/打印预览资源
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>呼叫中心应急系统</TITLE>
+<META content=text/html;charset=gb2312 http-equiv=Content-Type>
+<SCRIPT>
+		
+			function write_log( str )
+			{	
+				this.document.getElementById("log").value += str;
+			}					
+			
+			function chg_btn_init_status( )
+			{
+				try
+				{
+					if(agentBar.IsInitial == 0)
+					{
+						this.document.getElementById("btnInit").disabled = false;
+						this.document.getElementById("btnUnInit").disabled = true;
+					}
+					else
+					{
+						if(agentBar.IsSignIn == 0)
+						{
+							this.document.getElementById("btnInit").disabled = true;
+							this.document.getElementById("btnUnInit").disabled = false;
+						}
+						else
+						{
+							this.document.getElementById("btnInit").disabled = true;
+							this.document.getElementById("btnUnInit").disabled = true;
+						}						
+					}
+				}
+				catch(e)
+				{
+					alert( "修改控件状态异常：" + e.message );
+				}
+			}
+			
+			function Init()
+			{
+				agentBar.AgentID          = this.document.getElementById("agentid").value;
+				agentBar.PassWord         = "2031123";
+				agentBar.DN               = this.document.getElementById("agentdn").value;
+				agentBar.StatusChangeType = 1;
+				agentBar.ServiceList      = "咨询";
+				agentBar.MainCTIIP        = "127.0.0.1";
+				agentBar.BackCTIIP        = "127.0.0.1";
+				agentBar.CTIPort          = 8310;
+				agentBar.AgentTag         = "";
+				agentBar.CustomerTag      = "agt";
+				agentBar.ANIChangeType    = 1;
+				agentBar.LogLevel         = 3;
+				
+				try
+				{
+					var ret = agentBar.Initial();
+					if( 0 != ret )
+					{
+						alert( "初始化失败：" + ret );
+					}
+					else
+					{
+						chg_btn_init_status();
+					}
+						
+				}
+				catch(e)
+				{
+					alert( "初始化控件异常："+ e.message );
+				}
+			}
+			
+			function UnInit()
+			{
+				try
+				{
+					var ret = agentBar.UnInitial();
+					if( 0 != ret )
+					{
+						alert( "反初始化失败："  + ret );
+					}
+					else
+					{
+						chg_btn_init_status();
+					}
+				}
+				catch(e)
+				{
+					alert( "反初始化控件异常：" + e.message );
+				}
+			}
+					
+		</SCRIPT>
+
+<SCRIPT language=JavaScript for=agentBar event="OnUnLogin()">
+			chg_btn_init_status();
+			write_log ("\nOnUnLogin: " );
+			for( i =0; i<arguments.length; i++ )
+			{
+				write_log ( " " + arguments[i] );
+			}
+		</SCRIPT>
+
+<SCRIPT language=JavaScript for=agentBar event="OnReady()">
+			chg_btn_init_status();
+			write_log ("\nOnReady: " );
+			for( i =0; i<arguments.length; i++ )
+			{
+				write_log ( " " + arguments[i] );
+			}
+		</SCRIPT>
+
+<SCRIPT language=JavaScript for=agentBar event="OnBusy()">
+			chg_btn_init_status();
+			write_log ( "\nOnBusy: " );
+			for( i =0; i<arguments.length; i++ )
+			{
+				write_log ( " " + arguments[i] );
+			}
+		</SCRIPT>
+
+<SCRIPT language=JavaScript for=agentBar event="OnRest()">
+			chg_btn_init_status();
+			write_log ("\nOnRest: ") ;
+			for( i =0; i<arguments.length; i++ )
+			{
+				write_log ( " " + arguments[i] );
+			}
+		</SCRIPT>
+
+<SCRIPT language=JavaScript for=agentBar event="OnLock()">
+			chg_btn_init_status();
+			write_log ( "\nOnLock: " );
+			for( i =0; i<arguments.length; i++ )
+			{
+				write_log ( " " + arguments[i] );
+			}
+		</SCRIPT>
+
+<SCRIPT language=JavaScript for=agentBar event="OnAlerting()">
+			chg_btn_init_status();
+			write_log ( "\nOnAlerting: " );
+			for( i =0; i<arguments.length; i++ )
+			{
+				write_log ( " " + arguments[i] );
+			}
+		</SCRIPT>
+
+<SCRIPT language=JavaScript for=agentBar event="OnHarfAlerting()">
+			chg_btn_init_status();
+			write_log ( "\nOnHarfAlerting: ");
+			for( i =0; i<arguments.length; i++ )
+			{
+				write_log ( " " + arguments[i] );
+			}
+		</SCRIPT>
+
+<SCRIPT language=JavaScript for=agentBar event="OnConnecting()">
+			chg_btn_init_status();
+			write_log ("\nOnConnecting: ");
+			for( i =0; i<arguments.length; i++ )
+			{
+				write_log ( " " + arguments[i] );
+			}
+		</SCRIPT>
+
+<SCRIPT language=JavaScript for=agentBar event="OnConnected()">
+			chg_btn_init_status();
+			write_log ( "\nOnConnected: ");
+			for( i =0; i<arguments.length; i++ )
+			{
+				write_log ( " " + arguments[i] );
+			}
+		</SCRIPT>
+
+<SCRIPT language=JavaScript for=agentBar event="OnInternalConnected()">
+			chg_btn_init_status();
+			write_log ( "\nOnInternalConnected: ");
+			for( i =0; i<arguments.length; i++ )
+			{
+				write_log ( " " + arguments[i] );
+			}
+		</SCRIPT>
+
+<SCRIPT language=JavaScript for=agentBar event="OnSuspended()">
+			chg_btn_init_status();
+			write_log ( "\nOnSuspended: ");
+			for( i =0; i<arguments.length; i++ )
+			{
+				write_log ( " " + arguments[i] );
+			}
+		</SCRIPT>
+
+<SCRIPT language=JavaScript for=agentBar event="OnBeginRecord()">
+			chg_btn_init_status();
+			write_log ( "\nOnBeginRecord: ");
+			for( i =0; i<arguments.length; i++ )
+			{
+				write_log ( " " + arguments[i] );
+			}
+		</SCRIPT>
+
+<SCRIPT language=JavaScript for=agentBar event="OnEndRecord()">
+			chg_btn_init_status();
+			write_log ( "\nOnEndRecord: ");
+			for( i =0; i<arguments.length; i++ )
+			{
+				write_log ( " " + arguments[i] );
+			}
+		</SCRIPT>
+
+<META name=GENERATOR content="MSHTML 8.00.6001.19170"></HEAD>
+<BODY>
+<TABLE border=1 width=1024 align=left>
+  <TBODY>
+  <TR>
+    <TD colSpan=2>
+      <CENTER><FONT size=6 face=微软雅黑>
+      <CENTER><B>欢迎使用呼叫中心应急系统</B></CENTER></FONT></CENTER></TD></TR>
+  <TR>
+    <TD width="10%">
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD align=right>工号</TD>
+          <TD><INPUT id=agentid value=2031 size=10></TD></TR>
+        <TR>
+          <TD align=right>电话</TD>
+          <TD><INPUT id=agentdn value=1031 size=10></TD></TR>
+        <TR>
+          <TD align=left><INPUT id=btnInit onclick=Init(); value=启用 type=button> 
+          </TD>
+          <TD><INPUT id=btnUnInit disabled onclick=UnInit(); value=停用 type=button> 
+          </TD></TR></TBODY></TABLE></TD>
+    <TD>
+      <OBJECT id=agentBar codeBase="control/CCAgentBar.cab#version=1,0,0,10" classid=clsid:6D4733B4-8E49-495C-9F2B-27606CEB20E3 width="100%" height=84>
+      </OBJECT>
+      </TD></TR>
+  <TR>
+    <TD width="100%" colSpan=2>
+      <MARQUEE scrollAmount=4><FONT color=#ff0000 size=5 
+      face=微软雅黑><B>呼叫中心应急系统
+      </B></FONT></MARQUEE></TD></TR>
+  <TR>
+    <TD width="100%" colSpan=2><TEXTAREA id=log rows=30 cols=160 value=""></TEXTAREA> 
+  </TD></TR></TBODY></TABLE></BODY></HTML>

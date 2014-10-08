@@ -1,0 +1,165 @@
+// *****************************************************************************
+//  Name:		CCAgentBar.idl，ActiveX 控件项目的类型库源
+//  Author:		Yanhl
+//  Version:	1.0
+// *****************************************************************************
+
+// 此文件将由 MIDL 编译器工具处理以
+//产生类型库(CCAgentBar.tlb)，该类型库将成为 
+// CCAgentBar.ocx 中的资源。
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(0C996584-8882-4D08-9D29-24F18B9928BA), version(1.0),
+  helpfile("CCAgentBar.hlp"),
+  helpstring("CCAgentBar ActiveX 控件模块"),
+  control ]
+library CCAgentBarLib
+{
+	importlib(STDOLE_TLB);
+
+	//  CCCAgentBarCtrl 的主调度接口
+
+	[ uuid(72EA8ED1-D4EE-4FE9-9313-BB7257EC19B8),
+	  helpstring("CCAgentBar Control 的调度接口")]
+	dispinterface _DCCAgentBar
+	{
+		properties:
+		[id(1), helpstring("属性 AgentID")] BSTR AgentID;
+		[id(2), helpstring("属性 PassWord")] BSTR PassWord;
+		[id(3), helpstring("属性 DN")] BSTR DN;
+		[id(4), helpstring("属性 StatusChangeType")] LONG StatusChangeType;
+		[id(5), helpstring("属性 AutoAnswer")] LONG AutoAnswer;
+		[id(6), helpstring("属性 ForceSignIn")] LONG ForceSignIn;
+		[id(7), helpstring("属性 ServiceList")] BSTR ServiceList;
+		[id(8), helpstring("属性 MainCTIIP")] BSTR MainCTIIP;
+		[id(9), helpstring("属性 BackCTIIP")] BSTR BackCTIIP;
+		[id(10), helpstring("属性 CTIPort")] LONG CTIPort;
+		[id(11), helpstring("属性 TimeOut")] LONG TimeOut;
+		[id(12), helpstring("属性 IsInitial")] LONG IsInitial;
+		[id(13), helpstring("属性 IsSignIn")] LONG IsSignIn;
+		[id(14), helpstring("属性 IsSIPPhone")] LONG IsSIPPhone;
+		[id(15), helpstring("属性 SIPServerIP")] BSTR SIPServerIP;
+		[id(16), helpstring("属性 SIPServerPort")] LONG SIPServerPort;
+		[id(17), helpstring("属性 PhoneNum")] BSTR PhoneNum;
+		[id(18), helpstring("属性 PhonePwd")] BSTR PhonePwd;
+		[id(19), helpstring("属性 AgentTag")] BSTR AgentTag;
+		[id(20), helpstring("属性 CustomerTag")] BSTR CustomerTag;
+		[id(21), helpstring("属性 ANIChangeType")] LONG ANIChangeType;
+		[id(22), helpstring("属性 IsShowCallOut")] LONG IsShowCallOut;
+		[id(23), helpstring("属性 IsCallOut")] LONG IsCallOut;
+		[id(24), helpstring("属性 LogLevel")] LONG LogLevel;
+		[id(25), helpstring("属性 EnableSeniorCall")] LONG EnableSeniorCall;
+		[id(26), helpstring("属性 AnyProperty")] BSTR AnyProperty;
+methods:
+		[id(27), helpstring("方法Initial")] LONG Initial(void);
+		[id(28), helpstring("方法UnInitial")] LONG UnInitial(void);
+		[id(29), helpstring("方法SignIn")] LONG SignIn(void);
+		[id(30), helpstring("方法SignOut")] LONG SignOut(void);
+		[id(31), helpstring("方法SetIdle")] LONG SetIdle(void);
+		[id(32), helpstring("方法SetBusy")] LONG SetBusy(void);
+		[id(33), helpstring("方法SetRest")] LONG SetRest(BSTR reason);
+		[id(34), helpstring("方法SetAgentStatus")] LONG SetAgentStatus(LONG agentState, BSTR reason);
+		[id(35), helpstring("方法GetAgentStatus")] LONG GetAgentStatus(void);
+		[id(36), helpstring("方法ResetSkill")] LONG ResetSkill(BSTR skillList);
+		[id(37), helpstring("方法Reset")] LONG Reset(void);
+		[id(38), helpstring("方法MakeCall")] LONG MakeCall(BSTR dest, BSTR showANI, BSTR showDest, LONG isOffhook, LONG type);
+		[id(39), helpstring("方法Answer")] LONG Answer(void);
+		[id(40), helpstring("方法ReleaseCall")] LONG ReleaseCall(void);
+		[id(41), helpstring("方法Hold")] LONG Hold(void);
+		[id(42), helpstring("方法Retrieve")] LONG Retrieve(void);
+		[id(43), helpstring("方法Consult")] LONG Consult(BSTR consultNum, BSTR showANI, BSTR showDest, LONG consultType);
+		[id(44), helpstring("方法Reconnect")] LONG Reconnect(void);
+		[id(45), helpstring("方法Transfer")] LONG Transfer(void);
+		[id(46), helpstring("方法SingleStepTransfer")] LONG SingleStepTransfer(BSTR transferNum, BSTR showANI, BSTR showDest, LONG transferStyle, LONG transferType);
+		[id(47), helpstring("方法Conference")] LONG Conference(void);
+		[id(48), helpstring("方法SetCallData")] LONG SetCallData(BSTR key, BSTR callData);
+		[id(49), helpstring("方法GetCallData")] BSTR GetCallData(BSTR key);
+		[id(50), helpstring("方法ForceOut")] LONG ForceOut(BSTR agentID);
+		[id(51), helpstring("方法ForceIdle")] LONG ForceIdle(BSTR agentID);
+		[id(52), helpstring("方法ForceBusy")] LONG ForceBusy(BSTR agentID);
+		[id(53), helpstring("方法Listen")] LONG Listen(BSTR agentID, BSTR showANI, BSTR showDest);
+		[id(54), helpstring("方法StopListen")] LONG StopListen(BSTR agentID);
+		[id(55), helpstring("方法Insert")] LONG Insert(BSTR agentID, BSTR showANI, BSTR showDest);
+		[id(56), helpstring("方法StopInsert")] LONG StopInsert(BSTR agentID);
+		[id(57), helpstring("方法SwitchInsertorListen")] LONG SwitchInsertorListen(BSTR agentID, BSTR showANI, BSTR showDest);
+		[id(58), helpstring("方法Break")] LONG Break(BSTR agentID);
+		[id(59), helpstring("方法SendDTMF")] LONG SendDTMF(BSTR dtmf);
+		[id(60), helpstring("方法MuteOn")] LONG MuteOn(void);
+		[id(61), helpstring("方法MuteOff")] LONG MuteOff(void);
+		[id(62), helpstring("方法GetAgentDetailByAgentID")] BSTR GetAgentDetailByAgentID(BSTR agentID);
+		[id(63), helpstring("方法GetAgentDetailByAgentDN")] BSTR GetAgentDetailByAgentDN(BSTR agentDN);
+		[id(64), helpstring("方法GetAgentDetailsByAgentIDs")] BSTR GetAgentDetailsByAgentIDs(BSTR agentIDs);
+		[id(65), helpstring("方法GetAgentDetailsByAgentDNs")] BSTR GetAgentDetailsByAgentDNs(BSTR agentDNs);
+		[id(66), helpstring("方法GetRecordFileName")] BSTR GetRecordFileName(void);
+		[id(67), helpstring("方法GetRestReason")] BSTR GetRestReason(void);
+		[id(68), helpstring("方法GetAgentNumberBySkill")] LONG GetAgentNumberBySkill(BSTR skill);
+		[id(69), helpstring("方法GetAgentDetailsBySkill")] BSTR GetAgentDetailsBySkill(BSTR skill);
+		[id(70), helpstring("方法GetSkillWaitingNumber")] BSTR GetSkillWaitingNumber(BSTR skill);
+		[id(71), helpstring("方法GetSkillWaitingCallInfo")] BSTR GetSkillWaitingCallInfo(BSTR skill);
+		[id(72), helpstring("方法GetPrivateQueue")] BSTR GetPrivateQueue(BSTR agentID);
+		[id(73), helpstring("方法GetSysInfo")] BSTR GetSysInfo(void);
+		[id(74), helpstring("方法GetCallingNo")] BSTR GetCallingNo(void);
+		[id(75), helpstring("方法GetOrgCallingNo")] BSTR GetOrgCallingNo(void);
+		[id(76), helpstring("方法GetCalledNo")] BSTR GetCalledNo(void);
+		[id(77), helpstring("方法GetOrgCalledNo")] BSTR GetOrgCalledNo(void);
+		[id(78), helpstring("方法SynchronizeCTITime")] LONG SynchronizeCTITime(void);
+		[id(79), helpstring("方法GetPromptByErrorCode")] BSTR GetPromptByErrorCode(LONG errCode);
+		[id(80), helpstring("方法JumptheQueue")] LONG JumptheQueue(LONGLONG requestId);
+		[id(81), helpstring("方法TransIVR")] LONG TransIVR(BSTR transferNum);
+		[id(82), helpstring("方法TransIVREx")] LONG TransIVREx(BSTR callerNum, BSTR transferNum);
+	};
+
+	//  CCCAgentBarCtrl 的事件调度接口
+
+	[ uuid(7AE6BDA7-9F41-4C75-9F71-FF055A167DC2),
+	  helpstring("CCAgentBar Control 的事件接口") ]
+	dispinterface _DCCAgentBarEvents
+	{
+		properties:
+			//  事件接口没有任何属性
+
+		methods:
+		[id(1)] void OnUnLogin(           LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(2)] void OnReady(             LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(3)] void OnBusy(              LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(4)] void OnRest(              LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(5)] void OnLock(              LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(6)] void OnAlerting(          LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(7)] void OnHarfAlerting(      LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(8)] void OnConnecting(        LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(9)] void OnConnected(         LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(10)] void OnHarfConnected(    LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(11)] void OnInternalConnected(LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(12)] void OnSuspended(        LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(13)] void OnConsultConnecting(LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(14)] void OnConsultConnected( LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(15)] void OnConference(       LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(16)] void OnMonitor(          LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(17)] void OnInsert(           LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(18)] void OnMonitored(        LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(19)] void OnInserted(         LONG eventID, BSTR callID, LONGLONG contactID, LONG partyNum, BSTR otherParty, LONG otherPartyAttribute, BSTR originatingParty, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(20)] void OnBeginRecord(      BSTR callID, LONGLONG contactID, BSTR filename, LONG reason, LONGLONG timestamp);
+		[id(21)] void OnEndRecord(        BSTR callID, LONGLONG contactID, BSTR filename, LONG reason, LONGLONG timestamp);
+		[id(22)] void OnInprivatequeue(   BSTR callID, LONGLONG contactID, LONGLONG requestID, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(23)] void OnOutprivatequeue(  BSTR callID, LONGLONG contactID, LONGLONG requestID, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(24)] void OnCTIDisconnect(    BSTR callID, LONGLONG contactID, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(25)] void OnCTIMasterChanged( BSTR callID, LONGLONG contactID, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(26)] void OnOperationFailed(  BSTR callID, LONGLONG contactID, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp);
+		[id(27)] void OnBeforeOutCall(    BSTR otherParty, LONG otherPartyAttribute, BSTR originalANI, BSTR originalDNIS, LONG reason, LONGLONG timestamp); // reason:  1,makecall; 2,consult; 3,singtrans
+        [id(28)] void OnHeartbeat(LONGLONG timestamp);
+        [id(29)] void OnBtnStatus(LONGLONG btnStatus, BSTR info);
+    };
+
+	//  CCCAgentBarCtrl 的类信息
+
+	[ uuid(6D4733B4-8E49-495C-9F2B-27606CEB20E3),
+	  helpstring("CCAgentBar Control"), control ]
+	coclass CCAgentBar
+	{
+		[default] dispinterface _DCCAgentBar;
+		[default, source] dispinterface _DCCAgentBarEvents;
+	};
+
+};

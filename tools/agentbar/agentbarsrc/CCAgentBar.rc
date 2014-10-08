@@ -1,0 +1,284 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "1 TYPELIB ""CCAgentBar.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,7,7
+ PRODUCTVERSION 1,0,7,7
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "百度在线网络技术（北京）有限公司"
+            VALUE "FileDescription", "坐席端控件"
+            VALUE "FileVersion", "1.0.7.7"
+            VALUE "InternalName", "CCAgentBar.ocx"
+            VALUE "LegalCopyright", "Apache 2.0"
+            VALUE "OriginalFilename", "CCAgentBar.ocx"
+            VALUE "ProductName", "agentbar"
+            VALUE "ProductVersion", "1.0.7.7"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_CCAGENTBAR          BITMAP                  "res\\CCAgentBarCtrl.bmp"
+IDB_BMP_SIGNIN          BITMAP                  "res\\有效_签入.bmp"
+IDB_BMP_SIGNOUT         BITMAP                  "res\\有效_签出.bmp"
+IDB_BMP_ANSWER          BITMAP                  "res\\有效_接听.bmp"
+IDB_BMP_CALLOUT         BITMAP                  "res\\有效_呼出.bmp"
+IDB_BMP_SENDDTMF        BITMAP                  "res\\有效_拨打分机.bmp"
+IDB_BMP_HANGUP          BITMAP                  "res\\有效_挂断.bmp"
+IDB_BMP_HOLD            BITMAP                  "res\\有效_保持.bmp"
+IDB_BMP_RETRIEVE        BITMAP                  "res\\有效_保持接回.bmp"
+IDB_BMP_CONSULT         BITMAP                  "res\\有效_咨询.bmp"
+IDB_BMP_RECONNECT       BITMAP                  "res\\有效_咨询接回.bmp"
+IDB_BMP_TRANSFER        BITMAP                  "res\\有效_咨询转移.bmp"
+IDB_BMP_CONFERENCE      BITMAP                  "res\\有效_咨询会议.bmp"
+IDB_BMP_SSTRANSFER      BITMAP                  "res\\有效_通话转移.bmp"
+IDB_BMP_REST            BITMAP                  "res\\有效_休息.bmp"
+IDB_BMP_READY           BITMAP                  "res\\有效_接听就绪.bmp"
+IDB_BMP_BUSY            BITMAP                  "res\\有效_呼出就绪.bmp"
+IDB_BMP_SKILLCHANGE     BITMAP                  "res\\有效_技能切换.bmp"
+IDB_BMP_FENGE           BITMAP                  "res\\分隔符.bmp"
+IDB_BMP_MS_SIGNIN       BITMAP                  "res\\鼠标经过_签入.bmp"
+IDB_BMP_MS_SIGNOUT      BITMAP                  "res\\鼠标经过_签出.bmp"
+IDB_BMP_MS_ANSWER       BITMAP                  "res\\鼠标经过_接听.bmp"
+IDB_BMP_MS_CALLOUT      BITMAP                  "res\\鼠标经过_呼出.bmp"
+IDB_BMP_MS_SENDDTMF     BITMAP                  "res\\鼠标经过_拨打分机.bmp"
+IDB_BMP_MS_HANGUP       BITMAP                  "res\\鼠标经过_挂断.bmp"
+IDB_BMP_MS_HOLD         BITMAP                  "res\\鼠标经过_保持.bmp"
+IDB_BMP_MS_RETRIEVE     BITMAP                  "res\\鼠标经过_保持接回.bmp"
+IDB_BMP_MS_CONSULT      BITMAP                  "res\\鼠标经过_咨询.bmp"
+IDB_BMP_MS_RECONNECT    BITMAP                  "res\\鼠标经过_咨询接回.bmp"
+IDB_BMP_MS_TRANSFER     BITMAP                  "res\\鼠标经过_咨询转移.bmp"
+IDB_BMP_MS_CONFERENCE   BITMAP                  "res\\鼠标经过_咨询会议.bmp"
+IDB_BMP_MS_SSTRANSFER   BITMAP                  "res\\鼠标经过_通话转移.bmp"
+IDB_BMP_MS_REST         BITMAP                  "res\\鼠标经过_休息.bmp"
+IDB_BMP_MS_READY        BITMAP                  "res\\鼠标经过_接听就绪.bmp"
+IDB_BMP_MS_BUSY         BITMAP                  "res\\鼠标经过_呼出就绪.bmp"
+IDB_BMP_MS_SKILLCHANGE  BITMAP                  "res\\鼠标经过_技能切换.bmp"
+IDB_BMP_IN_SIGNIN       BITMAP                  "res\\无效_签入.bmp"
+IDB_BMP_IN_SIGNOUT      BITMAP                  "res\\无效_签出.bmp"
+IDB_BMP_IN_ANSWER       BITMAP                  "res\\无效_接听.bmp"
+IDB_BMP_IN_CALLOUT      BITMAP                  "res\\无效_呼出.bmp"
+IDB_BMP_IN_SENDDTMF     BITMAP                  "res\\无效_拨打分机.bmp"
+IDB_BMP_IN_HANGUP       BITMAP                  "res\\无效_挂断.bmp"
+IDB_BMP_IN_HOLD         BITMAP                  "res\\无效_保持.bmp"
+IDB_BMP_IN_RETRIEVE     BITMAP                  "res\\无效_保持接回.bmp"
+IDB_BMP_IN_CONSULT      BITMAP                  "res\\无效_咨询.bmp"
+IDB_BMP_IN_RECONNECT    BITMAP                  "res\\无效_咨询接回.bmp"
+IDB_BMP_IN_TRANSFER     BITMAP                  "res\\无效_咨询转移.bmp"
+IDB_BMP_IN_CONFERENCE   BITMAP                  "res\\无效_咨询会议.bmp"
+IDB_BMP_IN_SSTRANSFER   BITMAP                  "res\\无效_通话转移.bmp"
+IDB_BMP_IN_REST         BITMAP                  "res\\无效_休息.bmp"
+IDB_BMP_IN_READY        BITMAP                  "res\\无效_接听就绪.bmp"
+IDB_BMP_IN_BUSY         BITMAP                  "res\\无效_呼出就绪.bmp"
+IDB_BMP_IN_SKILLCHANGE  BITMAP                  "res\\无效_技能切换.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PROPPAGE_CCAGENTBAR DIALOG  0, 0, 250, 62
+STYLE DS_SETFONT | WS_CHILD
+FONT 9, "MS Shell Dlg"
+BEGIN
+    LTEXT           "TODO: 将用于操作 CCAgentBar Control 的属性的控件放置在此对话框上。",
+                    IDC_STATIC,7,25,229,16
+END
+
+IDD_DIALOG_CCBAR DIALOGEX 0, 0, 430, 43
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "签入/签出",IDC_BUTTON_SIGNINOUT,0,0,50,14
+    PUSHBUTTON      "接听",IDC_BUTTON_ANSWER,50,0,50,14
+    PUSHBUTTON      "呼出",IDC_BUTTON_CALLOUT,100,0,50,14
+    PUSHBUTTON      "挂断",IDC_BUTTON_HUNGUP,150,0,50,14
+    PUSHBUTTON      "保持",IDC_BUTTON_HOLD,200,0,50,14
+    PUSHBUTTON      "咨询",IDC_BUTTON_CONSULT,250,0,50,14
+    PUSHBUTTON      "咨询转移",IDC_BUTTON_TRANSFER,300,0,50,14
+    PUSHBUTTON      "咨询会议",IDC_BUTTON_CONFERENCE,0,14,50,14
+    PUSHBUTTON      "通话转移",IDC_BUTTON_SINGLESTEPTRANSFER,50,14,50,14
+    PUSHBUTTON      "休息",IDC_BUTTON_REST,100,14,50,14
+    PUSHBUTTON      "接听就绪",IDC_BUTTON_READY,150,14,50,14
+    PUSHBUTTON      "呼出就绪",IDC_BUTTON_BUSY,200,14,50,14
+    PUSHBUTTON      "技能切换",IDC_BUTTON_SKILLCHANGE,250,14,50,14
+    PUSHBUTTON      "分隔符1",IDC_BUTTON_FENGEONE,0,28,50,14
+    PUSHBUTTON      "分隔符2",IDC_BUTTON_FENGETWO,50,28,50,14
+    PUSHBUTTON      "分隔符3",IDC_BUTTON_FENGETHREE,100,28,50,14
+    PUSHBUTTON      "分隔符4",IDC_BUTTON_FENGEFOUR,150,28,50,14
+    LTEXT           "坐席状态",IDC_STATIC_AGENTSTATE,202,31,33,8
+    LTEXT           "状态时长",IDC_STATIC_AGENTSTATE_TIME,237,31,33,8
+    LTEXT           "坐席通话",IDC_STATIC_TALK,271,31,33,8
+    LTEXT           "通话时长",IDC_STATIC_TALK_TIME,307,31,33,8
+    LTEXT           "坐席总通话",IDC_STATIC_TOTAL,342,31,40,8
+    LTEXT           "总通话时长",IDC_STATIC_TOTAL_TIME,385,31,40,8
+    COMBOBOX        IDC_COMBO_REST,350,0,40,30,CBS_DROPDOWNLIST | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_SKILL,300,15,80,30,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_DIALOG_CALLOUT DIALOGEX 0, 0, 182, 94
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_BORDER | 
+    WS_SYSMENU
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_NUMBER,45,35,85,14,ES_AUTOHSCROLL | ES_NUMBER
+    DEFPUSHBUTTON   "确  定",IDOK,29,67,50,14
+    PUSHBUTTON      "取  消",IDCANCEL,99,67,50,14
+    CONTROL         "坐席",IDC_RADIO_IN,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,43,13,36,10
+    CONTROL         "外线",IDC_RADIO_OUT,"Button",BS_AUTORADIOBUTTON,93,13,
+                    36,10
+END
+
+IDD_DIALOG_INFO DIALOGEX 0, 0, 156, 58
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,23,41,50,14
+    PUSHBUTTON      "取消",IDCANCEL,84,41,50,14
+    PUSHBUTTON      "显示",IDC_BUTTON_ICON,13,8,28,23,WS_DISABLED
+    EDITTEXT        IDC_EDIT_INFO,49,9,89,23,ES_MULTILINE | ES_READONLY | 
+                    NOT WS_BORDER
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_PROPPAGE_CCAGENTBAR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 243
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_DIALOG_CALLOUT, DIALOG
+    BEGIN
+        RIGHTMARGIN, 181
+        BOTTOMMARGIN, 93
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON_ALARM          ICON                    "res\\提示_警告.ICO"
+IDI_ICON_ERROR          ICON                    "res\\提示_错误.ICO"
+IDI_ICON_INFOMATION     ICON                    "res\\提示_信息.ICO"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_CCAGENTBAR          "CCAgentBar Control"
+    IDS_CCAGENTBAR_PPG      "CCAgentBar Property Page"
+    IDS_CCAGENTBAR_PPG_CAPTION "常规"
+END
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "CCAgentBar.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

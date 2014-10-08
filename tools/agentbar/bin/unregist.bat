@@ -1,0 +1,3 @@
+@echo off
+echo ×¢Ïúocx×é¼þ...
+regsvr32 /u "%~dp0CCAgentBar.ocx"

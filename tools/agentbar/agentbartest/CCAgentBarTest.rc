@@ -1,0 +1,310 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\CCAgentBarTest.rc2""  // 非 Microsoft Visual C++ 编辑过的资源\r\n"
+    "#include ""afxres.rc""         // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\CCAgentBarTest.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_CCAGENTBARTEST_DIALOG DIALOGEX 0, 0, 575, 397
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | 
+    WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "CCAgentBarTest"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,468,374,50,16
+    PUSHBUTTON      "取消",IDCANCEL,518,374,50,16
+    CONTROL         "",IDC_CCAGENTBARCTRL,
+                    "{6D4733B4-8E49-495C-9F2B-27606CEB20E3}",WS_TABSTOP,7,7,
+                    561,50
+    LTEXT           "CTI主IP地址：",IDC_STATIC,7,72,46,8
+    LTEXT           "CTI备IP地址：",IDC_STATIC,7,88,46,8
+    LTEXT           "CTI端口：",IDC_STATIC,20,103,32,8
+    LTEXT           "坐席ID：",IDC_STATIC,173,72,28,8
+    LTEXT           "坐席密码：",IDC_STATIC,166,88,35,8
+    LTEXT           "坐席号码：",IDC_STATIC,166,103,35,8
+    LTEXT           "技能：",IDC_STATIC,180,121,22,8
+    LTEXT           "超时时间：",IDC_STATIC,252,72,35,8
+    LTEXT           "ATag：",IDC_STATIC,262,87,24,8
+    LTEXT           "CTag：",IDC_STATIC,263,102,24,8
+    LTEXT           "释放后状态：",IDC_STATIC,349,72,42,8
+    LTEXT           "主叫变换类型：",IDC_STATIC,342,88,49,8
+    LTEXT           "日志级别：",IDC_STATIC,356,103,35,8
+    LTEXT           "SIPIP地址：",IDC_STATIC,14,138,38,8
+    LTEXT           "SIP端口：",IDC_STATIC,169,138,32,8
+    LTEXT           "SIP号码：",IDC_STATIC,255,138,32,8
+    LTEXT           "SIP密码：",IDC_STATIC,359,138,32,8
+    EDITTEXT        IDC_EDIT_MAINCTI,54,69,100,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_BACKCTI,54,87,99,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_CTIPORT,54,101,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_AGENTID,202,69,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_AGENTPWD,202,85,40,14,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_AGENTDN,202,101,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_AGENTSKILL,202,117,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_TIMEOUT,292,69,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_ATAG,292,85,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_CTAG,292,101,40,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_COMBO_SCTYPE,392,69,48,44,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_ACTYPE,392,85,48,53,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_LOGLEVEL,392,101,48,63,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "自动应答",IDC_CHECK_AUTOANSWER,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,454,71,43,10
+    CONTROL         "强制签入",IDC_CHECK_FORCEIN,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,454,86,43,10
+    CONTROL         "已初始化",IDC_CHECK_ISINITAIL,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,454,102,43,10
+    CONTROL         "已签入",IDC_CHECK_ISIN,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,454,118,37,10
+    CONTROL         "显示呼出",IDC_CHECK_SHOWCALLOUT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,506,71,43,10
+    CONTROL         "允许呼出",IDC_CHECK_CANCALLOUT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,506,86,43,10
+    CONTROL         "高级呼叫",IDC_CHECK_SENIORCALL,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,506,102,43,10
+    EDITTEXT        IDC_EDIT_SIP,54,138,100,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_SIPPORT,202,138,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_SIPDN,292,138,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_SIPPWD,392,138,40,14,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    CONTROL         "集成SIP电话",IDC_CHECK_ISSIP,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,454,138,54,10
+    PUSHBUTTON      "初始化",IDC_BUTTON_INITIAL,467,161,50,14
+    PUSHBUTTON      "反初始化",IDC_BUTTON_UNINITIAL,517,161,50,14
+    LTEXT           "号码：",IDC_STATIC,7,184,22,8
+    LTEXT           "主叫显示：",IDC_STATIC,83,184,35,8
+    LTEXT           "被叫显示：",IDC_STATIC,166,184,35,8
+    LTEXT           "摘机类型：",IDC_STATIC,252,184,35,8
+    LTEXT           "呼出类型：",IDC_STATIC,356,184,35,8
+    EDITTEXT        IDC_EDIT_NUMBER,30,181,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_SHOWANI,119,181,40,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_SHOWDNIS,202,181,40,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_COMBO_AGENTTYPE,292,181,48,37,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_CALLTYPE,392,181,48,35,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "输入信息：",IDC_STATIC,7,211,35,8
+    LTEXT           "输出信息：",IDC_STATIC,7,242,35,8
+    EDITTEXT        IDC_EDIT_INPUT,7,222,350,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_OUTPUT,7,256,350,134,ES_MULTILINE | WS_VSCROLL
+    PUSHBUTTON      "签入",IDC_BUTTON_IN,366,221,50,14
+    PUSHBUTTON      "签出",IDC_BUTTON_OUT,417,221,50,14
+    PUSHBUTTON      "应答",IDC_BUTTON_ANS,468,221,50,14
+    PUSHBUTTON      "呼出",IDC_BUTTON_CALLOUT,518,221,50,14
+    PUSHBUTTON      "二次拨号",IDC_BUTTON_DTMF,366,236,50,14
+    PUSHBUTTON      "挂断",IDC_BUTTON_HUNGUP,417,236,50,14
+    PUSHBUTTON      "保持",IDC_BUTTON_HOLD,468,236,50,14
+    PUSHBUTTON      "保持接回",IDC_BUTTON_RETRIVE,518,236,50,14
+    PUSHBUTTON      "咨询",IDC_BUTTON_CONSULT,366,251,50,14
+    PUSHBUTTON      "咨询接回",IDC_BUTTON_RECONNECT,417,251,50,14
+    PUSHBUTTON      "咨询转移",IDC_BUTTON_CTRANS,468,251,50,14
+    PUSHBUTTON      "咨询会议",IDC_BUTTON_CONF,518,251,50,14
+    PUSHBUTTON      "通话转移",IDC_BUTTON_TRANS,366,265,50,14
+    PUSHBUTTON      "休息",IDC_BUTTON_REST,417,265,50,14
+    PUSHBUTTON      "接听就绪",IDC_BUTTON_READY,468,265,50,14
+    PUSHBUTTON      "呼出就绪",IDC_BUTTON_BUSY,518,265,50,14
+    COMBOBOX        IDC_COMBO_OPERATION,366,295,101,95,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "运行",IDC_BUTTON_RUN,468,294,50,14
+    PUSHBUTTON      "清空",IDC_BUTTON_CLEAR,366,322,55,44
+    PUSHBUTTON      "转移IVR",IDC_BUTTON_TRANSIVR,366,280,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,4,0
+ PRODUCTVERSION 1,0,4,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "FileVersion", "1.0.4.0"
+            VALUE "InternalName", "CCAgentBarTest.exe"
+            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "OriginalFilename", "CCAgentBarTest.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.4.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_CCAGENTBARTEST_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 568
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 390
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_CCAGENTBARTEST_DIALOG DLGINIT
+BEGIN
+    IDC_CCAGENTBARCTRL, 0x376, 130, 0
+0x0000, 0x0000, 0x0000, 0x0001, 0x657e, 0x0000, 0x0918, 0x0000, 0x0000, 
+0x0000, 0x3204, 0x3030, 0x0731, 0x3032, 0x3130, 0x3231, 0x0433, 0x3831, 
+0x3838, 0xffff, 0xffff, 0x0101, 0xd704, 0xd1c9, 0x0caf, 0x3031, 0x332e, 
+0x2e36, 0x3531, 0x2e39, 0x3931, 0x310c, 0x2e30, 0x3633, 0x312e, 0x3935, 
+0x312e, 0x1039, 0x0027, 0xb800, 0x000b, 0x0000, 0x310c, 0x2e30, 0x3633, 
+0x312e, 0x3935, 0x362e, 0xc430, 0x0013, 0x0400, 0x3831, 0x3838, 0x3104, 
+0x3332, 0x0334, 0x6761, 0x0374, 0x7669, 0xff72, 0xffff, 0x01ff, 0xff01, 
+0xffff, 0x00ff, 
+    IDC_COMBO_SCTYPE, 0x403, 9, 0
+0xd3bd, 0xfdcc, 0xcdbe, 0xf7d0, "\000" 
+    IDC_COMBO_SCTYPE, 0x403, 9, 0
+0xf4ba, 0xf6b3, 0xcdbe, 0xf7d0, "\000" 
+    IDC_COMBO_ACTYPE, 0x403, 5, 0
+0xb5cf, 0xb3cd, "\000" 
+    IDC_COMBO_ACTYPE, 0x403, 5, 0
+0xb8cd, 0xabb4, "\000" 
+    IDC_COMBO_ACTYPE, 0x403, 5, 0
+0xe8c9, 0xa8b6, "\000" 
+    IDC_COMBO_LOGLEVEL, 0x403, 5, 0
+0xedb4, 0xf3ce, "\000" 
+    IDC_COMBO_LOGLEVEL, 0x403, 5, 0
+0xafbe, 0xe6b8, "\000" 
+    IDC_COMBO_LOGLEVEL, 0x403, 5, 0
+0xecb9, 0xa3bc, "\000" 
+    IDC_COMBO_LOGLEVEL, 0x403, 5, 0
+0xf7b5, 0xd4ca, "\000" 
+    IDC_COMBO_AGENTTYPE, 0x403, 5, 0
+0xd5c6, 0xa8cd, "\000" 
+    IDC_COMBO_AGENTTYPE, 0x403, 7, 0
+0xa3b3, 0xaad5, 0xfabb, "\000" 
+    IDC_COMBO_CALLTYPE, 0x403, 5, 0
+0xf8d7, 0xafcf, "\000" 
+    IDC_COMBO_CALLTYPE, 0x403, 5, 0
+0xe2cd, 0xdfcf, "\000" 
+    0
+END
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\CCAgentBarTest.rc2"  // 非 Microsoft Visual C++ 编辑过的资源
+#include "afxres.rc"         // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

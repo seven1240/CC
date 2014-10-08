@@ -1,0 +1,268 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\SIPPhone.rc2""  // 非 Microsoft Visual C++ 编辑过的资源\r\n"
+    "#include ""afxres.rc""         // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\SIPPhone.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "关于 SIPPhone"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "SIPPhone Version 1.0",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2012",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDD_SIPPHONE_DIALOG DIALOGEX 0, 0, 379, 365
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "SIPPhone"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "设置账号",IDC_BUTTON_SET_ACCOUNT,146,241,72,14
+    PUSHBUTTON      "Make Call To:",IDC_BUTTON_MAKE_CALL_TO,9,164,66,15
+    LISTBOX         IDC_LIST1,7,39,365,111,LBS_SORT | LBS_NOINTEGRALHEIGHT | 
+                    LBS_DISABLENOSCROLL | WS_VSCROLL | WS_HSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "Hangup",IDC_BUTTON_HANGUP,277,164,42,15
+    PUSHBUTTON      "Answer",IDC_BUTTON_ANSWER,325,164,40,15
+    PUSHBUTTON      "1",IDC_BUTTON_B1,256,195,29,14
+    PUSHBUTTON      "2",IDC_BUTTON_B2,291,195,29,14
+    PUSHBUTTON      "3",IDC_BUTTON_B3,327,195,33,14
+    PUSHBUTTON      "4",IDC_BUTTON_B4,256,213,28,14
+    PUSHBUTTON      "5",IDC_BUTTON_B5,291,213,29,14
+    PUSHBUTTON      "6",IDC_BUTTON_B6,328,213,33,14
+    PUSHBUTTON      "7",IDC_BUTTON_B7,256,230,28,14
+    PUSHBUTTON      "8",IDC_BUTTON_B8,291,230,29,14
+    PUSHBUTTON      "9",IDC_BUTTON_B9,328,230,33,14
+    PUSHBUTTON      "*",IDC_BUTTON_BS,256,248,28,14
+    PUSHBUTTON      "0",IDC_BUTTON_B0,291,248,29,14
+    PUSHBUTTON      "#",IDC_BUTTON_BP,328,247,33,14
+    PUSHBUTTON      "Set Codecs",IDC_BUTTON_SET_CODECS,10,285,61,14
+    EDITTEXT        IDC_EDIT_SIP_IP,48,200,74,14,ES_AUTOHSCROLL
+    GROUPBOX        "账号",IDC_STATIC,7,185,239,82
+    LTEXT           "SIP IP:",IDC_STATIC,18,203,22,8
+    LTEXT           "SIP PORT:",IDC_STATIC,143,202,34,8
+    EDITTEXT        IDC_EDIT_SIP_ACCOUNT,51,220,62,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_SIP_PASS,144,219,71,14,ES_AUTOHSCROLL
+    LTEXT           "Account:",IDC_STATIC,18,223,30,8
+    LTEXT           "Pass:",IDC_STATIC,121,223,16,8
+    EDITTEXT        IDC_EDIT_DEST,81,164,188,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_CODECS,81,285,290,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "版本信息",IDC_BUTTON_GET_VER,7,6,44,12
+    LTEXT           "speex/8000/1 speex/32000/1 iLBC/8000/1 GSM/8000/1 PCMU/8000/1 PCMA/8000/1 G722/16000/1 L16/44100/1 L16/44100/2 ",
+                    IDC_STATIC,83,304,288,8
+    EDITTEXT        IDC_EDIT_SIP_PORT,181,199,40,14,ES_AUTOHSCROLL
+    LTEXT           "TIMEOUT:",IDC_STATIC,19,244,34,8
+    EDITTEXT        IDC_EDIT_TIMEOUT,58,241,50,14,ES_AUTOHSCROLL
+    GROUPBOX        "呼叫控制",IDC_STATIC,7,154,365,30
+    GROUPBOX        "键盘",IDC_STATIC,250,186,122,81
+    PUSHBUTTON      "初始化",IDC_BUTTON_INIT,332,149,40,12,NOT WS_VISIBLE | 
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_LOCAL_PORT,107,6,31,12,ES_AUTOHSCROLL
+    LTEXT           "Local SIP port:",IDC_STATIC,59,9,47,8
+    GROUPBOX        "编解码和语音设备设置",IDC_STATIC,7,273,365,85
+    COMBOBOX        IDC_COMBO_SPKR,255,321,110,103,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_MIC,112,322,108,103,CBS_DROPDOWN | CBS_SORT | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Mic:",IDC_STATIC,82,323,13,8
+    LTEXT           "Spkr:",IDC_STATIC,235,323,17,8
+    PUSHBUTTON      "Set Audio Devices",IDC_BUTTON_SET_AUDIO_DEVICES,10,320,
+                    63,14
+    CONTROL         "",IDC_SLIDER_MIC,"msctls_trackbar32",TBS_BOTH | 
+                    TBS_NOTICKS | WS_TABSTOP,109,337,110,15
+    CONTROL         "",IDC_SLIDER_SPKR,"msctls_trackbar32",TBS_BOTH | 
+                    TBS_NOTICKS | WS_TABSTOP,256,336,105,15
+    CONTROL         "静音",IDC_CHECK_MUTE_MIC,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,80,337,25,10
+    CONTROL         "静音",IDC_CHECK_MUTE_SPKR,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,230,337,24,10
+    PUSHBUTTON      "Hold",IDC_BUTTON_HOLD,271,149,30,15,NOT WS_VISIBLE
+    PUSHBUTTON      "UnHold",IDC_BUTTON_UNHOLD,303,148,30,15,NOT WS_VISIBLE
+    EDITTEXT        IDC_EDIT_LOG_FILE,172,6,61,12,ES_AUTOHSCROLL
+    LTEXT           "Log file:",IDC_STATIC,143,9,26,8
+    LTEXT           "Log Level:",IDC_STATIC,239,9,33,8
+    LTEXT           "(0~6)",IDC_STATIC,293,10,20,8
+    CONTROL         "追加",IDC_CHECK_LOG_APPEND,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,325,9,30,10
+    LTEXT           "(*若改动以上四个参数，则需重启程序生效*)",IDC_STATIC,
+                    215,21,146,10
+    EDITTEXT        IDC_EDIT_LOG_LEVEL,275,7,15,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "清空信息",IDC_BUTTON_CLEAR,7,25,70,11
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "SIPPhone.exe"
+            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "OriginalFilename", "SIPPhone.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "翻译", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_SIPPHONE_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 372
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 358
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 SIPPhone(&A)..."
+END
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\SIPPhone.rc2"  // 非 Microsoft Visual C++ 编辑过的资源
+#include "afxres.rc"         // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
