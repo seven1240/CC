@@ -22,7 +22,7 @@
 #tools
 
 ##建议环境
-1. windows些列操作系统，建议版本不低于 windows xp
+1. windows系列操作系统，建议版本不低于 windows xp
 2. vs2003、vs2010
 
 
